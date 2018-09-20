@@ -1,0 +1,31 @@
+{
+  "name": "steve_thompson_jslib",
+  "version": "1.0.0",
+  "description": "library of useful typescript functions and classes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/writetome51/my_js_library.git"
+  },
+  "keywords": [
+    "basic",
+    "data-handling",
+    "functions",
+    "classes"
+  ],
+  "author": "Steve Thompson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/writetome51/my_js_library/issues"
+  },
+  "homepage": "https://github.com/writetome51/my_js_library#readme",
+  "dependencies": {
+    "basic-data-handling": "latest",
+    "datatype-handlers": "latest",
+    "ObjectFactory": "latest",
+    "SelfIdentifiableMethodChainableBatchGetterSetter": "latest"
+  }
+}
