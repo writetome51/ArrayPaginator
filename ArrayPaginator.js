@@ -19,7 +19,8 @@ var ObjectFactory_1 = require("../../ObjectFactory/ObjectFactory");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
     function ArrayPaginator(_itemGetter, // injected dependency
-    data, itemsPerPage) {
+    data, // the actual array.
+    itemsPerPage) {
         if (data === void 0) { data = []; }
         if (itemsPerPage === void 0) { itemsPerPage = 25; }
         var _this = _super.call(this) || this;
@@ -29,15 +30,18 @@ var ArrayPaginator = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(ArrayPaginator.prototype, "data", {
+        // gets the entire array:
         get: function () {
             return this._itemGetter.data;
         },
+        // this.data will hold the actual array:
         set: function (value) {
             this._itemGetter.data = value;
         },
         enumerable: true,
         configurable: true
     });
+    // the main feature of this class:
     ArrayPaginator.prototype.getPage = function (pageIndex) {
         var firstIndexToKeep = this.itemsPerPage * pageIndex;
         return this._itemGetter.adjacentItems(firstIndexToKeep, this.itemsPerPage);

@@ -9,7 +9,7 @@ export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContain
 	constructor(
 		private _itemGetter: OpenArrayItemGetter, // injected dependency
 
-		data = [],
+		data = [], // the actual array.
 		public itemsPerPage = 25
 	) {
 		super();
@@ -17,16 +17,19 @@ export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContain
 	}
 
 
+	// this.data will hold the actual array:
 	set data(value) {
 		this._itemGetter.data = value;
 	}
 
 
+	// gets the entire array:
 	get data() {
 		return this._itemGetter.data;
 	}
 
 
+	// the main feature of this class:
 	getPage(pageIndex): any[] {
 		const firstIndexToKeep = this.itemsPerPage * pageIndex;
 		return this._itemGetter.adjacentItems(firstIndexToKeep, this.itemsPerPage);
