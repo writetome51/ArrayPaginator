@@ -1,7 +1,7 @@
 import { IOpenDataContainer } from './IOpenDataContainer';
-import { SelfIdentifiable } from '../../BaseObject';
 import { OpenArrayItemGetter } from './OpenArrayContainer/OpenArrayItemGetter';
-import { ObjectFactory } from '../../ObjectFactory/ObjectFactory';
+import { SelfIdentifiable } from 'self-identifiable-method-chainable-batch-getter-setter/SelfIdentifiable';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 
 
 export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContainer<any[]> {

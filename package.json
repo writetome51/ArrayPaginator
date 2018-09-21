@@ -1,31 +1,30 @@
 {
-  "name": "steve_thompson_jslib",
+  "name": "@writetome51/array-paginator",
   "version": "1.0.0",
-  "description": "library of useful typescript functions and classes.",
-  "main": "index.js",
+  "description": "a data pagination tool",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/writetome51/my_js_library.git"
+    "url": "git+https://github.com/writetome51/ArrayPaginator.git"
   },
   "keywords": [
-    "basic",
-    "data-handling",
-    "functions",
-    "classes"
+    "array",
+    "paginator",
+    "pagination",
+    "class"
   ],
   "author": "Steve Thompson",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/writetome51/my_js_library/issues"
+    "url": "https://github.com/writetome51/ArrayPaginator/issues"
   },
-  "homepage": "https://github.com/writetome51/my_js_library#readme",
+  "homepage": "https://github.com/writetome51/ArrayPaginator#readme",
   "dependencies": {
     "basic-data-handling": "latest",
-    "datatype-handlers": "latest",
-    "ObjectFactory": "latest",
-    "SelfIdentifiableMethodChainableBatchGetterSetter": "latest"
+    "@writetome51/object-factory": "latest",
+    "self-identifiable-method-chainable-batch-getter-setter": "latest"
   }
 }

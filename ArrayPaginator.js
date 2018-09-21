@@ -13,9 +13,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var BaseObject_1 = require("../../BaseObject");
 var OpenArrayItemGetter_1 = require("./OpenArrayContainer/OpenArrayItemGetter");
-var ObjectFactory_1 = require("../../ObjectFactory/ObjectFactory");
+var SelfIdentifiable_1 = require("self-identifiable-method-chainable-batch-getter-setter/SelfIdentifiable");
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
     function ArrayPaginator(_itemGetter, // injected dependency
@@ -47,6 +47,6 @@ var ArrayPaginator = /** @class */ (function (_super) {
         return this._itemGetter.adjacentItems(firstIndexToKeep, this.itemsPerPage);
     };
     return ArrayPaginator;
-}(BaseObject_1.SelfIdentifiable));
+}(SelfIdentifiable_1.SelfIdentifiable));
 exports.ArrayPaginator = ArrayPaginator;
 ObjectFactory_1.ObjectFactory.register({ class: ArrayPaginator, dependencies: [OpenArrayItemGetter_1.OpenArrayItemGetter] });
