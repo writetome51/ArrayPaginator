@@ -25,6 +25,7 @@
   "dependencies": {
     "basic-data-handling": "latest",
     "@writetome51/object-factory": "latest",
-    "self-identifiable-method-chainable-batch-getter-setter": "latest"
+    "@writetome51/open-array": "latest",
+    "self-identifiable": "latest"
   }
 }

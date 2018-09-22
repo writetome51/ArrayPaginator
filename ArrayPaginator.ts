@@ -1,6 +1,6 @@
 import { IOpenDataContainer } from './IOpenDataContainer';
 import { OpenArrayItemGetter } from './OpenArrayContainer/OpenArrayItemGetter';
-import { SelfIdentifiable } from 'self-identifiable-method-chainable-batch-getter-setter/SelfIdentifiable';
+import { SelfIdentifiable } from 'self-identifiable/SelfIdentifiable';
 import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 
 
