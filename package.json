@@ -22,10 +22,15 @@
     "url": "https://github.com/writetome51/ArrayPaginator/issues"
   },
   "homepage": "https://github.com/writetome51/ArrayPaginator#readme",
+  "devDependencies": {
+    "intuitive-array-handlers": "latest"
+  },
   "dependencies": {
     "basic-data-handling": "latest",
+    "intuitive-number-handlers": "latest",
     "@writetome51/object-factory": "latest",
     "@writetome51/open-array": "latest",
-    "self-identifiable": "latest"
+    "self-identifiable": "latest",
+    "open-data-container": "latest"
   }
 }
