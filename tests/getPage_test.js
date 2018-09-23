@@ -48,7 +48,64 @@ else
 // Test 4: Make sure paginator.totalPages is always correct after changing the amount
 // of data and itemsPerPage several times:
 var results = [];
+var expectedResults = [0, 2, 4, 3];
 paginator.data = [];
-paginator.itemsPerPage = 0;
+paginator.itemsPerPage = 5;
 results.push(paginator.totalPages);
-console.log(paginator.totalPages);
+paginator.data = [1, 2];
+paginator.itemsPerPage = 1;
+results.push(paginator.totalPages);
+paginator.data = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]; // 10
+paginator.itemsPerPage = 3;
+results.push(paginator.totalPages);
+paginator.data = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]; // 20
+paginator.itemsPerPage = 9;
+results.push(paginator.totalPages);
+if (arraysMatch_1.arraysMatch(results, expectedResults))
+    console.log('test 4 passed');
+else
+    console.log('test 4 failed.');
+// Test 5: if itemsPerPage is set to a non-number, float, 0, or negative, an error is
+// triggered.
+// To pass, all these should trigger errors:
+var numErrors = 0;
+try {
+    paginator.itemsPerPage = false;
+}
+catch (e) {
+    ++numErrors;
+}
+try {
+    paginator.itemsPerPage = 1.2;
+}
+catch (e) {
+    ++numErrors;
+}
+try {
+    paginator.itemsPerPage = 0;
+}
+catch (e) {
+    ++numErrors;
+}
+try {
+    paginator.itemsPerPage = -0.1;
+}
+catch (e) {
+    ++numErrors;
+}
+if (numErrors === 4)
+    console.log('test 5 passed');
+else
+    console.log('test 5 failed');
+// Test 6: if paginator.data is set to a non-array, it triggers error:
+errorTriggered = false;
+try {
+    paginator.data = {};
+}
+catch (e) {
+    errorTriggered = true;
+}
+if (errorTriggered)
+    console.log('test 6 passed');
+else
+    console.log('test 6 failed');

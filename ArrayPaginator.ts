@@ -17,7 +17,7 @@ export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContain
 	) {
 		super();
 		this._itemGetter.data = data; // itemGetter checks data type to ensure it's array.
-		this.itemsPerPage = this._itemsPerPage;
+		this.itemsPerPage = this._itemsPerPage; // _itemsPerPage gets validated.
 	}
 
 

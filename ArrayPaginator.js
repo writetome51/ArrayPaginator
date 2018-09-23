@@ -30,7 +30,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
         _this._itemGetter = _itemGetter;
         _this._itemsPerPage = _itemsPerPage;
         _this._itemGetter.data = data; // itemGetter checks data type to ensure it's array.
-        _this.itemsPerPage = _this._itemsPerPage;
+        _this.itemsPerPage = _this._itemsPerPage; // _itemsPerPage gets validated.
         return _this;
     }
     Object.defineProperty(ArrayPaginator.prototype, "data", {
