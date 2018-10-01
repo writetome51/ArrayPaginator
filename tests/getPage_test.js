@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 var ArrayPaginator_1 = require("../ArrayPaginator");
-var getCountup_getCountdown_1 = require("intuitive-number-handlers/get/getCountup_getCountdown");
-var arraysMatch_1 = require("intuitive-array-handlers/no_modify/return_boolean/arraysMatch");
+var getCountup_getCountdown_1 = require("@writetome51/get-countup-countdown/getCountup_getCountdown");
+var arraysMatch_1 = require("@writetome51/arrays-match/arraysMatch");
 // Setup:
-var paginator = ObjectFactory_1.ObjectFactory.getInstance(ArrayPaginator_1.ArrayPaginator);
+var paginator = new ArrayPaginator_1.ArrayPaginator();
 paginator.itemsPerPage = 25;
 paginator.data = getCountup_getCountdown_1.getCountup(1, 50); // now data has numbers 1 thru 50.
 // Test 1: make sure paginator.getPage(index) returns the right items:

@@ -1,35 +1,19 @@
-import { IOpenDataContainer } from 'open-data-container/IOpenDataContainer';
-import { SelfIdentifiable } from 'self-identifiable/SelfIdentifiable';
-import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
-import { OpenArrayItemGetter } from '@writetome51/open-array/OpenArrayItemGetter';
-import { getRoundedUp } from 'intuitive-number-handlers/get/getRounded_getRoundedDown_getRoundedUp';
-import { inRange } from 'intuitive-number-handlers/return_boolean/inRange';
 import { errorIfNotInteger } from 'basic-data-handling/errorIfNotInteger';
+import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
+import { getAdjacentAt } from '@writetome51/array-non-modifying-getters-basic/getAdjacentAt';
+import { inRange } from '@writetome51/number-analysis-basic/inRange';
+import { getRoundedUp } from '@writetome51/get-rounded-up-down/getRounded_getRoundedDown_getRoundedUp';
+import { not } from '@writetome51/not';
 
 
-export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContainer<any[]> {
+export class ArrayPaginator extends OpenArrayContainer {
 
 	constructor(
-		private _itemGetter: OpenArrayItemGetter, // injected dependency
-
-		data = [], // the actual array.
+		data = [], // the actual array, represented by inherited property this.data
 		private _itemsPerPage = 25
 	) {
-		super();
-		this._itemGetter.data = data; // itemGetter checks data type to ensure it's array.
+		super(data);
 		this.itemsPerPage = this._itemsPerPage; // _itemsPerPage gets validated.
-	}
-
-
-	// this.data will hold the actual array:
-
-	set data(value) {
-		this._itemGetter.data = value;
-	}
-
-
-	get data() {
-		return this._itemGetter.data;
 	}
 
 
@@ -39,7 +23,8 @@ export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContain
 		this._itemsPerPage = value;
 	}
 
-	get itemsPerPage(){
+
+	get itemsPerPage() {
 		return this._itemsPerPage;
 	}
 
@@ -54,17 +39,12 @@ export class ArrayPaginator extends SelfIdentifiable implements IOpenDataContain
 	// the main feature of this class:
 
 	getPage(pageIndex): any[] {
-		if (!(inRange([0, this.totalPages - 1], pageIndex))) {
+		if (not(inRange([0, this.totalPages - 1], pageIndex))) {
 			throw new Error('The requested page does not exist');
 		}
-		const firstIndexToKeep = this._itemsPerPage * pageIndex;
-		return this._itemGetter.adjacentItems(firstIndexToKeep, this._itemsPerPage);
+		const firstIndexToGet = this._itemsPerPage * pageIndex;
+		return getAdjacentAt(firstIndexToGet, this._itemsPerPage, this.data);
 	}
 
 
 }
-
-
-ObjectFactory.register(
-	{class: ArrayPaginator, dependencies: [OpenArrayItemGetter]}
-);

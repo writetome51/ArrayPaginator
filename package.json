@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/array-paginator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a data pagination tool",
   "main": "",
   "scripts": {
@@ -23,14 +23,15 @@
   },
   "homepage": "https://github.com/writetome51/ArrayPaginator#readme",
   "devDependencies": {
-    "intuitive-array-handlers": "latest"
+    "@writetome51/arrays-match": "latest",
+    "@writetome51/get-countup-countdown": "latest"
   },
   "dependencies": {
     "basic-data-handling": "latest",
-    "intuitive-number-handlers": "latest",
-    "@writetome51/object-factory": "latest",
-    "@writetome51/open-array": "latest",
-    "self-identifiable": "latest",
-    "open-data-container": "latest"
+    "@writetome51/open-array-container": "latest",
+    "@writetome51/array-non-modifying-getters-basic": "latest",
+    "@writetome51/number-analysis-basic": "latest",
+    "@writetome51/get-rounded-up-down": "latest",
+    "@writetome51/not": "latest"
   }
 }

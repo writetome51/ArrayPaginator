@@ -13,37 +13,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var SelfIdentifiable_1 = require("self-identifiable/SelfIdentifiable");
-var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
-var OpenArrayItemGetter_1 = require("@writetome51/open-array/OpenArrayItemGetter");
-var getRounded_getRoundedDown_getRoundedUp_1 = require("intuitive-number-handlers/get/getRounded_getRoundedDown_getRoundedUp");
-var inRange_1 = require("intuitive-number-handlers/return_boolean/inRange");
 var errorIfNotInteger_1 = require("basic-data-handling/errorIfNotInteger");
+var OpenArrayContainer_1 = require("@writetome51/open-array-container/OpenArrayContainer");
+var getAdjacentAt_1 = require("@writetome51/array-non-modifying-getters-basic/getAdjacentAt");
+var inRange_1 = require("@writetome51/number-analysis-basic/inRange");
+var getRounded_getRoundedDown_getRoundedUp_1 = require("@writetome51/get-rounded-up-down/getRounded_getRoundedDown_getRoundedUp");
+var not_1 = require("@writetome51/not");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
-    function ArrayPaginator(_itemGetter, // injected dependency
-    data, // the actual array.
+    function ArrayPaginator(data, // the actual array, represented by inherited property this.data
     _itemsPerPage) {
         if (data === void 0) { data = []; }
         if (_itemsPerPage === void 0) { _itemsPerPage = 25; }
-        var _this = _super.call(this) || this;
-        _this._itemGetter = _itemGetter;
+        var _this = _super.call(this, data) || this;
         _this._itemsPerPage = _itemsPerPage;
-        _this._itemGetter.data = data; // itemGetter checks data type to ensure it's array.
         _this.itemsPerPage = _this._itemsPerPage; // _itemsPerPage gets validated.
         return _this;
     }
-    Object.defineProperty(ArrayPaginator.prototype, "data", {
-        get: function () {
-            return this._itemGetter.data;
-        },
-        // this.data will hold the actual array:
-        set: function (value) {
-            this._itemGetter.data = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ArrayPaginator.prototype, "itemsPerPage", {
         get: function () {
             return this._itemsPerPage;
@@ -67,13 +53,12 @@ var ArrayPaginator = /** @class */ (function (_super) {
     });
     // the main feature of this class:
     ArrayPaginator.prototype.getPage = function (pageIndex) {
-        if (!(inRange_1.inRange([0, this.totalPages - 1], pageIndex))) {
+        if (not_1.not(inRange_1.inRange([0, this.totalPages - 1], pageIndex))) {
             throw new Error('The requested page does not exist');
         }
-        var firstIndexToKeep = this._itemsPerPage * pageIndex;
-        return this._itemGetter.adjacentItems(firstIndexToKeep, this._itemsPerPage);
+        var firstIndexToGet = this._itemsPerPage * pageIndex;
+        return getAdjacentAt_1.getAdjacentAt(firstIndexToGet, this._itemsPerPage, this.data);
     };
     return ArrayPaginator;
-}(SelfIdentifiable_1.SelfIdentifiable));
+}(OpenArrayContainer_1.OpenArrayContainer));
 exports.ArrayPaginator = ArrayPaginator;
-ObjectFactory_1.ObjectFactory.register({ class: ArrayPaginator, dependencies: [OpenArrayItemGetter_1.OpenArrayItemGetter] });

@@ -1,11 +1,10 @@
-import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 import { ArrayPaginator } from '../ArrayPaginator';
-import { getCountup } from 'intuitive-number-handlers/get/getCountup_getCountdown';
-import { arraysMatch } from 'intuitive-array-handlers/no_modify/return_boolean/arraysMatch';
+import { getCountup } from '@writetome51/get-countup-countdown/getCountup_getCountdown';
+import { arraysMatch } from '@writetome51/arrays-match/arraysMatch';
 
 
 // Setup:
-let paginator = ObjectFactory.getInstance(ArrayPaginator);
+let paginator = new ArrayPaginator();
 paginator.itemsPerPage = 25;
 paginator.data = getCountup(1, 50); // now data has numbers 1 thru 50.
 

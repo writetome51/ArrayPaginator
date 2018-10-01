@@ -1,15 +1,14 @@
-To get an instance of this class:
+ArrayPaginator provides one public method, getPage(pageIndex), that returns a sub-array
+of items copied from the entire array.
 
-let paginator = ObjectFactory.getInstance(ArrayPaginator, [theArray, numItemsPerPage]);
+Example:
 
-Then, to get a page of items:
+let paginator = new ArrayPaginator(theArray, numItemsPerPage);
 
 let page = paginator.getPage(pageIndex);
 
-Further info:
 
-ArrayPaginator provides one public method, getPage(pageIndex), that returns a sub-array of items copied
-from the entire array.
+Further info:
 
 It has 3 public properties:
 
@@ -19,5 +18,5 @@ itemsPerPage (read-writable):  number
 
 totalPages (read-only):  number
 
-Its private property this._itemGetter checks the entire array to make sure its actually an
-array, so you don't need to do that yourself.
+Whenever the data property is assigned a new value, it's checked to make sure it's
+an array.
