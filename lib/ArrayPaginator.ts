@@ -1,8 +1,8 @@
 import { errorIfNotInteger } from 'basic-data-handling/errorIfNotInteger';
 import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
-import { getAdjacentAt } from '@writetome51/array-non-modifying-getters-basic/getAdjacentAt';
-import { inRange } from '@writetome51/number-analysis-basic/inRange';
-import { getRoundedUp } from '@writetome51/get-rounded-up-down/getRounded_getRoundedDown_getRoundedUp';
+import { getAdjacentAt } from '@writetome51/array-get-adjacent-at/getAdjacentAt';
+import { inRange } from '@writetome51/in-range';
+import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 import { not } from '@writetome51/not';
 
 

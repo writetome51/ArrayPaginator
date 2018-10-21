@@ -2,13 +2,13 @@
   "name": "@writetome51/array-paginator",
   "version": "1.0.1",
   "description": "a data pagination tool",
-  "main": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/writetome51/ArrayPaginator.git"
+    "url": "git+https://github.com/writetome51/array-paginator.git"
   },
   "keywords": [
     "array",
@@ -17,20 +17,20 @@
     "class"
   ],
   "author": "Steve Thompson",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/writetome51/ArrayPaginator/issues"
+    "url": "https://github.com/writetome51/array-paginator/issues"
   },
-  "homepage": "https://github.com/writetome51/ArrayPaginator#readme",
+  "homepage": "https://github.com/writetome51/array-paginator#readme",
   "devDependencies": {
     "@writetome51/arrays-match": "latest",
     "@writetome51/get-countup-countdown": "latest"
   },
   "dependencies": {
     "basic-data-handling": "latest",
+    "@writetome51/array-get-adjacent-at": "latest",
     "@writetome51/open-array-container": "latest",
-    "@writetome51/array-non-modifying-getters-basic": "latest",
-    "@writetome51/number-analysis-basic": "latest",
+    "@writetome51/in-range": "latest",
     "@writetome51/get-rounded-up-down": "latest",
     "@writetome51/not": "latest"
   }

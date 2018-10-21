@@ -1,5 +1,5 @@
 import { ArrayPaginator } from '../ArrayPaginator';
-import { getCountup } from '@writetome51/get-countup-countdown/getCountup_getCountdown';
+import { getCountup } from '@writetome51/get-countup-countdown';
 import { arraysMatch } from '@writetome51/arrays-match/arraysMatch';
 
 

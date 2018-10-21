@@ -3,7 +3,9 @@ of items copied from the entire array.
 
 Example:
 
-let paginator = new ArrayPaginator(theArray, numItemsPerPage);
+let paginator = new ArrayPaginator(theArray, itemsPerPage);
+
+(if no arguments are passed to constructor, theArray = [] and itemPerPage = 25)
 
 let page = paginator.getPage(pageIndex);
 
@@ -14,9 +16,9 @@ It has 3 public properties:
 
 data (read-writable):  this holds the array.
 
-itemsPerPage (read-writable):  number
+itemsPerPage (read-writable):  integer
 
-totalPages (read-only):  number
+totalPages (read-only):  integer
 
 Whenever the data property is assigned a new value, it's checked to make sure it's
 an array.
