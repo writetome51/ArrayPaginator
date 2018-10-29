@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/array-paginator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a data pagination tool",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,8 +13,11 @@
   },
   "keywords": [
     "array",
+    "data",
+    "display",
     "paginator",
     "pagination",
+    "typescript",
     "class"
   ],
   "author": "Steve Thompson",
