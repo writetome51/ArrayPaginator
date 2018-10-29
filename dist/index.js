@@ -23,23 +23,23 @@ var not_1 = require("@writetome51/not");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
     function ArrayPaginator(data, // the actual array, represented by inherited property this.data
-    _itemsPerPage) {
+    __itemsPerPage) {
         if (data === void 0) { data = []; }
-        if (_itemsPerPage === void 0) { _itemsPerPage = 25; }
+        if (__itemsPerPage === void 0) { __itemsPerPage = 25; }
         var _this = _super.call(this, data) || this;
-        _this._itemsPerPage = _itemsPerPage;
-        _this.itemsPerPage = _this._itemsPerPage; // _itemsPerPage gets validated.
+        _this.__itemsPerPage = __itemsPerPage;
+        _this.itemsPerPage = _this.__itemsPerPage; // _itemsPerPage gets validated.
         return _this;
     }
     Object.defineProperty(ArrayPaginator.prototype, "itemsPerPage", {
         get: function () {
-            return this._itemsPerPage;
+            return this.__itemsPerPage;
         },
         set: function (value) {
             errorIfNotInteger_1.errorIfNotInteger(value);
             if (value < 1)
                 throw new Error('The number of items per page must be at least 1');
-            this._itemsPerPage = value;
+            this.__itemsPerPage = value;
         },
         enumerable: true,
         configurable: true
@@ -54,17 +54,20 @@ var ArrayPaginator = /** @class */ (function (_super) {
     });
     // the main feature of this class:
     ArrayPaginator.prototype.getPage = function (pageIndex) {
-        var totalPages = this.totalPages;
-        if (totalPages === 0 || not_1.not(in_range_1.inRange([0, totalPages - 1], pageIndex))) {
-            throw new Error('The requested page does not exist');
-        }
-        var firstIndexToGet = this._itemsPerPage * pageIndex;
+        this.__errorIfRequestedPageDoesNotExist(pageIndex);
+        var firstIndexToGet = this.itemsPerPage * pageIndex;
         if (this.__isLastPage(pageIndex)) {
             // ...only return the remaining items in array, not this.itemsPerPage:
             return getTail_1.getTail((this.data.length - firstIndexToGet), this.data);
         }
         else
-            return array_get_adjacent_at_1.getAdjacentAt(firstIndexToGet, this._itemsPerPage, this.data);
+            return array_get_adjacent_at_1.getAdjacentAt(firstIndexToGet, this.itemsPerPage, this.data);
+    };
+    ArrayPaginator.prototype.__errorIfRequestedPageDoesNotExist = function (pageIndex) {
+        var totalPages = this.totalPages; // So it only calls getter function once.
+        if (totalPages === 0 || not_1.not(in_range_1.inRange([0, totalPages - 1], pageIndex))) {
+            throw new Error('The requested page does not exist');
+        }
     };
     ArrayPaginator.prototype.__isLastPage = function (pageIndex) {
         return (pageIndex === (this.totalPages - 1));

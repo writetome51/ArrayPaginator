@@ -2,12 +2,12 @@ import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 
 export declare class ArrayPaginator extends PublicArrayContainer {
-	private _itemsPerPage;
+	private __itemsPerPage;
 
 
 	constructor(
 		data?: any[], // the actual array, represented by inherited property this.data
-		_itemsPerPage?: number
+		__itemsPerPage?: number
 	);
 
 
@@ -18,5 +18,6 @@ export declare class ArrayPaginator extends PublicArrayContainer {
 	getPage(pageIndex: any): any[];
 
 
+	private __errorIfRequestedPageDoesNotExist;
 	private __isLastPage;
 }

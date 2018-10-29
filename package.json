@@ -32,9 +32,9 @@
     "@writetome51/public-array-container": "latest",
     "basic-data-handling": "latest",
     "@writetome51/array-get-adjacent-at": "latest",
+    "@writetome51/array-get-head-tail": "latest",
     "@writetome51/in-range": "latest",
     "@writetome51/get-rounded-up-down": "latest",
-    "@writetome51/not": "latest",
-    "@writetome51/array-get-head-tail": "latest"
+    "@writetome51/not": "latest"
   }
 }

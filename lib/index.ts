@@ -11,10 +11,10 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	constructor(
 		data = [], // the actual array, represented by inherited property this.data
-		private _itemsPerPage = 25
+		private __itemsPerPage = 25
 	) {
 		super(data);
-		this.itemsPerPage = this._itemsPerPage; // _itemsPerPage gets validated.
+		this.itemsPerPage = this.__itemsPerPage; // _itemsPerPage gets validated.
 	}
 
 
@@ -22,12 +22,12 @@ export class ArrayPaginator extends PublicArrayContainer {
 		errorIfNotInteger(value);
 		if (value < 1) throw new Error('The number of items per page must be at least 1');
 
-		this._itemsPerPage = value;
+		this.__itemsPerPage = value;
 	}
 
 
 	get itemsPerPage(): number {
-		return this._itemsPerPage;
+		return this.__itemsPerPage;
 	}
 
 
@@ -41,21 +41,27 @@ export class ArrayPaginator extends PublicArrayContainer {
 	// the main feature of this class:
 
 	getPage(pageIndex): any[] {
-		let totalPages = this.totalPages;
-		if (totalPages === 0 || not(inRange([0, totalPages - 1], pageIndex))) {
-			throw new Error('The requested page does not exist');
-		}
-		const firstIndexToGet = this._itemsPerPage * pageIndex;
+		this.__errorIfRequestedPageDoesNotExist(pageIndex);
+
+		const firstIndexToGet = this.itemsPerPage * pageIndex;
 
 		if (this.__isLastPage(pageIndex)) {
 			// ...only return the remaining items in array, not this.itemsPerPage:
 			return getTail((this.data.length - firstIndexToGet), this.data);
 		}
-		else return getAdjacentAt(firstIndexToGet, this._itemsPerPage, this.data);
+		else return getAdjacentAt(firstIndexToGet, this.itemsPerPage, this.data);
 	}
 
 
-	private __isLastPage(pageIndex) {
+	private __errorIfRequestedPageDoesNotExist(pageIndex) {
+		let totalPages = this.totalPages; // So it only calls getter function once.
+		if (totalPages === 0 || not(inRange([0, totalPages - 1], pageIndex))) {
+			throw new Error('The requested page does not exist');
+		}
+	}
+
+
+	private __isLastPage(pageIndex): boolean {
 		return (pageIndex === (this.totalPages - 1));
 	}
 
