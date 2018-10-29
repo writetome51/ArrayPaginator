@@ -5,7 +5,7 @@ Example:
 
 let paginator = new ArrayPaginator(theArray, itemsPerPage);
 
-(if no arguments are passed to constructor, theArray = [] and itemPerPage = 25)
+(if no arguments are passed to constructor, theArray = [] and itemsPerPage = 25)
 
 let page = paginator.getPage(pageIndex);
 

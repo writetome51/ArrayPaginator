@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1cfbe9ed-5006-41ad-b14f-601912cbbf55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ArrayPaginator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ArrayPaginator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tests/getPage_test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tests/getPage_test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -112,53 +120,67 @@
     <session id="-1075573222">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="LICENSE" value="1" />
-          <entry key="js" value="1" />
-          <entry key="json" value="2" />
-          <entry key="md" value="2" />
-          <entry key="ts" value="7" />
+          <entry key="js" value="11" />
+          <entry key="json" value="7" />
+          <entry key="md" value="6" />
+          <entry key="ts" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="1" />
-          <entry key="Markdown" value="2" />
+          <entry key="JSON" value="6" />
+          <entry key="JavaScript" value="11" />
+          <entry key="Markdown" value="6" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="TypeScript" value="7" />
+          <entry key="TypeScript" value="31" />
+          <entry key="tsconfig" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="52" />
-          <entry key="json" value="68" />
-          <entry key="md" value="117" />
-          <entry key="ts" value="8" />
+          <entry key="json" value="81" />
+          <entry key="md" value="118" />
+          <entry key="ts" value="1008" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="68" />
+          <entry key="JSON" value="81" />
           <entry key="JavaScript" value="52" />
-          <entry key="Markdown" value="117" />
-          <entry key="TypeScript" value="8" />
+          <entry key="Markdown" value="118" />
+          <entry key="TypeScript" value="1008" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="TypeScriptServerServiceImpl" value="1" />
+          <entry key="TypeScriptServerServiceImpl" value="3" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/tests.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="159" column="26" selection-start-line="159" selection-start-column="26" selection-end-line="159" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -171,6 +193,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>_itemsperpage</find>
+      <find>new A</find>
     </findStrings>
     <replaceStrings>
       <replace>itemsPerPage</replace>
@@ -186,10 +209,15 @@
         <option value="$PROJECT_DIR$/tests/tests.ts" />
         <option value="$PROJECT_DIR$/ArrayPaginator.ts" />
         <option value="$PROJECT_DIR$/tests/getPage_test.ts" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/lib/ArrayPaginator.ts" />
         <option value="$PROJECT_DIR$/lib/tests/getPage_test.ts" />
+        <option value="$PROJECT_DIR$/lib/getPage_test.ts" />
+        <option value="$PROJECT_DIR$/dist/index.d.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/lib/index.ts" />
+        <option value="$PROJECT_DIR$/lib/tests.ts" />
       </list>
     </option>
   </component>
@@ -215,6 +243,9 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
@@ -234,6 +265,16 @@
               <item name="array-paginator" type="b2602c69:ProjectViewProjectNode" />
               <item name="array-paginator" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="array-paginator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="array-paginator" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="array-paginator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="array-paginator" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -248,7 +289,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web.server" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -267,12 +308,30 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.tests.js">
+    <configuration name="getPage_test.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="getPage_test.js" working-dir="$PROJECT_DIR$/dist/tests">
+      <method v="2" />
+    </configuration>
+    <configuration name="getPage_test.js (2)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="getPage_test.js" working-dir="$PROJECT_DIR$/dist">
+      <method v="2" />
+    </configuration>
     <configuration name="getPage_test.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/lib/tests/getPage_test.js" working-dir="$PROJECT_DIR$/lib/tests">
       <method v="2" />
     </configuration>
+    <configuration name="tests.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="tests.js" working-dir="$PROJECT_DIR$/dist">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.getPage_test.js" />
+      <item itemvalue="Node.js.getPage_test.js (1)" />
+      <item itemvalue="Node.js.getPage_test.js (2)" />
+      <item itemvalue="Node.js.tests.js" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.tests.js" />
+        <item itemvalue="Node.js.getPage_test.js (2)" />
+        <item itemvalue="Node.js.getPage_test.js (1)" />
         <item itemvalue="Node.js.getPage_test.js" />
       </list>
     </recent_temporary>
@@ -305,30 +364,33 @@
       <workItem from="1538687935209" duration="536000" />
       <workItem from="1538689105356" duration="651000" />
       <workItem from="1538694746677" duration="3000" />
-      <workItem from="1540088226073" duration="1809000" />
+      <workItem from="1540088226073" duration="2342000" />
+      <workItem from="1540710050046" duration="5639000" />
+      <workItem from="1540774673074" duration="10686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21179000" />
+    <option name="totallyTimeSpent" value="38037000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="829" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="835" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.68277574" visible="true" weight="0.26180258" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.68277574" visible="true" weight="0.1874106" />
       <window_info id="Structure" order="1" sideWeight="0.50139666" side_tool="true" weight="0.2634943" />
       <window_info id="Favorites" order="2" sideWeight="0.3172243" side_tool="true" weight="0.26145172" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.27121" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989429" weight="0.26330534" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989429" visible="true" weight="0.2777778" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39900866" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5010571" side_tool="true" weight="0.4857497" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.47206703" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49964765" visible="true" weight="0.34313726" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49964765" weight="0.34305555" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32402235" />
       <window_info anchor="bottom" id="Duplicates" order="12" weight="0.32925472" />
@@ -377,21 +439,58 @@
     <entry file="file://$PROJECT_DIR$/node_modules/@writetome51/array-non-modifying-getters-basic/package.json" />
     <entry file="file://$PROJECT_DIR$/node_modules/@writetome51/open-array-container/OpenArrayContainer.ts" />
     <entry file="file://$PROJECT_DIR$/not/index.js" />
-    <entry file="file://$PROJECT_DIR$/lib/ArrayPaginator.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/index.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/@writetome51/not/index.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/@writetome51/not/package.json" />
     <entry file="file://$PROJECT_DIR$/node_modules/@writetome51/get-rounded-up-down/getRounded_getRoundedDown_getRoundedUp.ts" />
     <entry file="file://$PROJECT_DIR$/node_modules/@writetome51/get-rounded-up-down/getRounded_getRoundedDown_getRoundedUp.js" />
-    <entry file="file://$PROJECT_DIR$/lib/tests/getPage_test.js">
+    <entry file="file://$PROJECT_DIR$/lib/tests/getPage_test.js" />
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js" />
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/ArrayPaginator.d.ts" />
+    <entry file="file://$PROJECT_DIR$/dist/tests/getPage_test.d.ts" />
+    <entry file="file://$PROJECT_DIR$/dist/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/tests.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="386">
-            <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+          <first_editor relative-caret-position="120">
+            <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
           </first_editor>
           <second_editor />
         </state>
@@ -402,44 +501,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ArrayPaginator.ts">
+    <entry file="file://$PROJECT_DIR$/dist/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-151">
+          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
+    <entry file="file://$PROJECT_DIR$/lib/index.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="674">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
+    <entry file="file://$PROJECT_DIR$/lib/tests.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tests/getPage_test.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="310">
+          <caret line="159" column="26" selection-start-line="159" selection-start-column="26" selection-end-line="159" selection-end-column="26" />
         </state>
       </provider>
     </entry>

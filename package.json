@@ -1,10 +1,11 @@
 {
   "name": "@writetome51/array-paginator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a data pagination tool",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -24,14 +25,16 @@
   "homepage": "https://github.com/writetome51/array-paginator#readme",
   "devDependencies": {
     "@writetome51/arrays-match": "latest",
-    "@writetome51/get-countup-countdown": "latest"
+    "@writetome51/get-countup-countdown": "latest",
+    "typescript": "^3.0.1"
   },
   "dependencies": {
+    "@writetome51/public-array-container": "latest",
     "basic-data-handling": "latest",
     "@writetome51/array-get-adjacent-at": "latest",
-    "@writetome51/open-array-container": "latest",
     "@writetome51/in-range": "latest",
     "@writetome51/get-rounded-up-down": "latest",
-    "@writetome51/not": "latest"
+    "@writetome51/not": "latest",
+    "@writetome51/array-get-head-tail": "latest"
   }
 }
