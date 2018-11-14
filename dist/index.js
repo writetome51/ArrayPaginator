@@ -16,7 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var public_array_container_1 = require("@writetome51/public-array-container");
 var errorIfNotInteger_1 = require("basic-data-handling/errorIfNotInteger");
 var array_get_adjacent_at_1 = require("@writetome51/array-get-adjacent-at");
-var getTail_1 = require("@writetome51/array-get-head-tail/getTail");
+var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var in_range_1 = require("@writetome51/in-range");
 var get_rounded_up_down_1 = require("@writetome51/get-rounded-up-down");
 var not_1 = require("@writetome51/not");
@@ -58,7 +58,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
         var firstIndexToGet = this.itemsPerPage * pageIndex;
         if (this.__isLastPage(pageIndex)) {
             // ...only return the remaining items in array, not this.itemsPerPage:
-            return getTail_1.getTail((this.data.length - firstIndexToGet), this.data);
+            return array_get_head_tail_1.getTail((this.data.length - firstIndexToGet), this.data);
         }
         else
             return array_get_adjacent_at_1.getAdjacentAt(firstIndexToGet, this.itemsPerPage, this.data);

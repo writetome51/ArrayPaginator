@@ -1,7 +1,7 @@
 import { PublicArrayContainer } from '@writetome51/public-array-container';
 import { errorIfNotInteger } from 'basic-data-handling/errorIfNotInteger';
 import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
-import { getTail } from '@writetome51/array-get-head-tail/getTail';
+import { getTail } from '@writetome51/array-get-head-tail';
 import { inRange } from '@writetome51/in-range';
 import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 import { not } from '@writetome51/not';
