@@ -9,7 +9,7 @@ getPage(pageIndex): any[]
 
 It has 3 public properties:
 
-data : any[] (read-writable)  This holds the array.
+data : any[] (read-writable)  // This holds the array.
 
 itemsPerPage: integer  (read-writable)  
 
