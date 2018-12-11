@@ -21,17 +21,16 @@ else console.log('test 1 failed');
 
 // Test 2:  make sure paginator.getPage(index) returns the right items when
 // the itemsPerPage is different:
-paginator.data = getCountup(1, 33);
-paginator.itemsPerPage = 10;
+paginator.itemsPerPage = 15;
 page1 = paginator.getPage(0);
 page2 = paginator.getPage(1);
 page3 = paginator.getPage(2);
 let page4 = paginator.getPage(3);
 
-if (arraysMatch(page1, getCountup(1, 10)) &&
-	arraysMatch(page2, getCountup(11, 20)) &&
-	arraysMatch(page3, getCountup(21, 30)) &&
-	arraysMatch(page4, getCountup(31, 33))) console.log('test 2 passed');
+if (arraysMatch(page1, getCountup(1, 15)) &&
+	arraysMatch(page2, getCountup(16, 30)) &&
+	arraysMatch(page3, getCountup(31, 45)) &&
+	arraysMatch(page4, getCountup(46, 55))) console.log('test 2 passed');
 else console.log('test 2 failed');
 
 

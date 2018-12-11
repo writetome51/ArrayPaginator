@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/array-paginator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A data pagination tool",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
