@@ -51,9 +51,9 @@ var ArrayPaginator = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ArrayPaginator.prototype, "currentPage", {
+    Object.defineProperty(ArrayPaginator.prototype, "currentPageNumber", {
         get: function () {
-            return this.__currentPage;
+            return this.__currentPageNumber;
         },
         enumerable: true,
         configurable: true
@@ -61,7 +61,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
     // the main feature of this class:
     ArrayPaginator.prototype.getPage = function (pageIndex) {
         this.__errorIfRequestedPageDoesNotExist(pageIndex);
-        this.__currentPage = (pageIndex + 1);
+        this.__currentPageNumber = (pageIndex + 1);
         var firstIndexToGet = this.itemsPerPage * pageIndex;
         if (this.__isLastPage(pageIndex)) {
             // ...only return the remaining items in array, not this.itemsPerPage:

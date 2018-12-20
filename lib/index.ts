@@ -9,7 +9,7 @@ import { not } from '@writetome51/not';
 
 export class ArrayPaginator extends PublicArrayContainer {
 
-	private __currentPage: number;
+	private __currentPageNumber: number;
 
 
 	constructor(
@@ -39,8 +39,8 @@ export class ArrayPaginator extends PublicArrayContainer {
 	}
 
 
-	get currentPage(): number {
-		return this.__currentPage;
+	get currentPageNumber(): number {
+		return this.__currentPageNumber;
 	}
 
 
@@ -48,7 +48,7 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	getPage(pageIndex): any[] {
 		this.__errorIfRequestedPageDoesNotExist(pageIndex);
-		this.__currentPage = (pageIndex + 1);
+		this.__currentPageNumber = (pageIndex + 1);
 
 		const firstIndexToGet = this.itemsPerPage * pageIndex;
 

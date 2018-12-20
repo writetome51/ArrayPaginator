@@ -34,7 +34,7 @@ itemsPerPage : integer  (read-writable)
 
 totalPages :  integer (read-only)
 
-currentPage : integer (read-only)
+currentPageNumber : integer (read-only)
     // is undefined until this.getPage() is called.
     // Its value only changes when this.getPage() is called.
 
@@ -105,7 +105,7 @@ paginator.itemsPerPage = 15;
 let totalPages = paginator.totalPages;
 
 // Getting the current page number:  
-let currentPage = paginator.currentPage;
+let currentPageNumber = paginator.currentPageNumber;
 ```
 
 ## Inheritance Chain
