@@ -9,12 +9,15 @@ import { not } from '@writetome51/not';
 
 export class ArrayPaginator extends PublicArrayContainer {
 
+	private __currentPage: number;
+
+
 	constructor(
 		data = [], // the actual array, represented by inherited property this.data
 		private __itemsPerPage = 25
 	) {
 		super(data);
-		this.itemsPerPage = this.__itemsPerPage; // _itemsPerPage gets validated.
+		this.itemsPerPage = this.__itemsPerPage; // __itemsPerPage gets validated.
 	}
 
 
@@ -31,10 +34,13 @@ export class ArrayPaginator extends PublicArrayContainer {
 	}
 
 
-	// read-only:
-
 	get totalPages(): number {
 		return getRoundedUp(this.data.length / this.itemsPerPage);
+	}
+
+
+	get currentPage(): number {
+		return this.__currentPage;
 	}
 
 
@@ -42,6 +48,7 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	getPage(pageIndex): any[] {
 		this.__errorIfRequestedPageDoesNotExist(pageIndex);
+		this.__currentPage = (pageIndex + 1);
 
 		const firstIndexToGet = this.itemsPerPage * pageIndex;
 

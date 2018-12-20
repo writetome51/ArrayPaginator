@@ -2,7 +2,13 @@ import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 
 export declare class ArrayPaginator extends PublicArrayContainer {
-	private __itemsPerPage;
+
+	itemsPerPage: number;
+	readonly totalPages: number;
+	readonly currentPage: number;
+
+	private __itemsPerPage: number;
+	private __currentPage: number;
 
 
 	constructor(
@@ -11,11 +17,7 @@ export declare class ArrayPaginator extends PublicArrayContainer {
 	);
 
 
-	itemsPerPage: number;
-	readonly totalPages: number;
-
-
-	getPage(pageIndex: any): any[];
+	getPage(pageIndex: number): any[];
 
 
 	private __errorIfRequestedPageDoesNotExist;

@@ -28,7 +28,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
         if (__itemsPerPage === void 0) { __itemsPerPage = 25; }
         var _this = _super.call(this, data) || this;
         _this.__itemsPerPage = __itemsPerPage;
-        _this.itemsPerPage = _this.__itemsPerPage; // _itemsPerPage gets validated.
+        _this.itemsPerPage = _this.__itemsPerPage; // __itemsPerPage gets validated.
         return _this;
     }
     Object.defineProperty(ArrayPaginator.prototype, "itemsPerPage", {
@@ -45,9 +45,15 @@ var ArrayPaginator = /** @class */ (function (_super) {
         configurable: true
     });
     Object.defineProperty(ArrayPaginator.prototype, "totalPages", {
-        // read-only:
         get: function () {
             return get_rounded_up_down_1.getRoundedUp(this.data.length / this.itemsPerPage);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ArrayPaginator.prototype, "currentPage", {
+        get: function () {
+            return this.__currentPage;
         },
         enumerable: true,
         configurable: true
@@ -55,6 +61,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
     // the main feature of this class:
     ArrayPaginator.prototype.getPage = function (pageIndex) {
         this.__errorIfRequestedPageDoesNotExist(pageIndex);
+        this.__currentPage = (pageIndex + 1);
         var firstIndexToGet = this.itemsPerPage * pageIndex;
         if (this.__isLastPage(pageIndex)) {
             // ...only return the remaining items in array, not this.itemsPerPage:
