@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    };
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -53,7 +53,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
     });
     Object.defineProperty(ArrayPaginator.prototype, "currentPageNumber", {
         get: function () {
-            return this.__currentPageNumber;
+            return this._currentPageNumber;
         },
         enumerable: true,
         configurable: true
@@ -61,7 +61,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
     // the main feature of this class:
     ArrayPaginator.prototype.getPage = function (pageIndex) {
         this.__errorIfRequestedPageDoesNotExist(pageIndex);
-        this.__currentPageNumber = (pageIndex + 1);
+        this._currentPageNumber = (pageIndex + 1);
         var firstIndexToGet = this.itemsPerPage * pageIndex;
         if (this.__isLastPage(pageIndex)) {
             // ...only return the remaining items in array, not this.itemsPerPage:

@@ -7,12 +7,13 @@ export declare class ArrayPaginator extends PublicArrayContainer {
 	readonly totalPages: number;
 	readonly currentPageNumber: number;
 
+	protected _currentPageNumber: number;
 	private __itemsPerPage;
-	private __currentPageNumber;
+
 
 
 	constructor(
-		data?: [], // the actual array, represented by inherited property this.data
+		data?: any[], // the actual array, represented by inherited property this.data
 		__itemsPerPage?: number
 	);
 

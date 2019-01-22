@@ -37,6 +37,9 @@ totalPages :  integer (read-only)
 currentPageNumber : integer (read-only)
     // is undefined until this.getPage() is called.
     // Its value only changes when this.getPage() is called.
+    
+protected _currentPageNumber: integer (read-writable)
+    // is available in case a subclass want to use it.
 
 className : string (read-only)
 ```

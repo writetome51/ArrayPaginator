@@ -9,7 +9,9 @@ import { not } from '@writetome51/not';
 
 export class ArrayPaginator extends PublicArrayContainer {
 
-	private __currentPageNumber: number;
+	// Is undefined until this.getPage() is called.
+	// Its value only changes when this.getPage() is called.
+	protected _currentPageNumber: number;
 
 
 	constructor(
@@ -40,7 +42,7 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 
 	get currentPageNumber(): number {
-		return this.__currentPageNumber;
+		return this._currentPageNumber;
 	}
 
 
@@ -48,7 +50,7 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	getPage(pageIndex): any[] {
 		this.__errorIfRequestedPageDoesNotExist(pageIndex);
-		this.__currentPageNumber = (pageIndex + 1);
+		this._currentPageNumber = (pageIndex + 1);
 
 		const firstIndexToGet = this.itemsPerPage * pageIndex;
 
