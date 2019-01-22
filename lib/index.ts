@@ -11,6 +11,8 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	// Is undefined until this.getPage() is called.
 	// Its value only changes when this.getPage() is called.
+	// public currentPageNumber: number
+
 	protected _currentPageNumber: number;
 
 
