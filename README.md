@@ -12,9 +12,9 @@ constructor(data? = [], itemsPerPage? = 25)
 
 ## Properties
 ```
-data : any[] (read-writable) // the actual array.
+data : any[]  // the actual array.
 
-itemsPerPage : integer  (read-writable)  
+itemsPerPage : integer 
 
 totalPages :  integer (read-only)
 
@@ -22,8 +22,8 @@ currentPageNumber : integer (read-only)
     // is undefined until this.getPage() is called.
     // Its value only changes when this.getPage() is called.
     
-protected _currentPageNumber: integer (read-writable)
-    // is available in case a subclass want to use it.
+protected _currentPageNumber: integer
+    // is available in case a subclass wants to use it.
 
 className : string (read-only)
 ```
@@ -32,8 +32,10 @@ className : string (read-only)
 ```
 getPage(pageIndex) : any[]
     // returns a sub-array of items copied from entire array.
-    
-
+``` 
+The methods below are not important to know about in order to use this  
+class.  They're inherited from [BaseClass](https://github.com/writetome51/typescript-base-class#baseclass) .
+``` 
 protected   _createGetterAndOrSetterForEach(
                   propertyNames: string[],
                   configuration: IGetterSetterConfiguration
