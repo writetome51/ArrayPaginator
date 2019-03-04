@@ -2,27 +2,11 @@
 
 A TypeScript/Javascript class for paginating an array.
 
-## Installation
-
-You must have npm installed first.  Then, in the command line:
-
-```bash
-npm install @writetome51/array-paginator
-```
-
-## Loading
-
-```
-// If using TypeScript:
-import {ArrayPaginator} from '@writetome51/array-paginator';
-// If using ES5 JavaScript:
-var ArrayPaginator = require('@writetome51/array-paginator').ArrayPaginator;
-```   
 
 ## Constructor
 
 ```
-new ArrayPaginator(data = [], itemsPerPage = 25)
+constructor(data? = [], itemsPerPage? = 25)
     // param 'data' is the array being paginated.
 ```
 
@@ -114,6 +98,23 @@ let currentPageNumber = paginator.currentPageNumber;
 ## Inheritance Chain
 
 ArrayPaginator<--[PublicArrayContainer](https://github.com/writetome51/public-array-container#publicarraycontainer)<--[BaseClass](https://github.com/writetome51/typescript-base-class#baseclass)
+
+## Installation
+
+You must have npm installed first.  Then, in the command line:
+
+```bash
+npm install @writetome51/array-paginator
+```
+
+## Loading
+
+```
+// If using TypeScript:
+import {ArrayPaginator} from '@writetome51/array-paginator';
+// If using ES5 JavaScript:
+var ArrayPaginator = require('@writetome51/array-paginator').ArrayPaginator;
+```
 
 
 ## License
