@@ -1,17 +1,17 @@
-import { PublicArrayContainer } from '@writetome51/public-array-container';
-import { errorIfNotInteger } from 'basic-data-handling/errorIfNotInteger';
+import { errorIfNotInteger } from 'error-if-not-integer';
 import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
+import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 import { getTail } from '@writetome51/array-get-head-tail';
 import { inRange } from '@writetome51/in-range';
-import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 import { not } from '@writetome51/not';
+import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 
 export class ArrayPaginator extends PublicArrayContainer {
 
 	// Is undefined until this.getPage() is called.
 	// Its value only changes when this.getPage() is called.
-	// public currentPageNumber: number
+	// public currentPageNumber: number  // read-only
 
 	protected _currentPageNumber: number;
 

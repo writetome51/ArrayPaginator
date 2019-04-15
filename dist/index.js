@@ -13,13 +13,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var public_array_container_1 = require("@writetome51/public-array-container");
-var errorIfNotInteger_1 = require("basic-data-handling/errorIfNotInteger");
+var error_if_not_integer_1 = require("error-if-not-integer");
 var array_get_adjacent_at_1 = require("@writetome51/array-get-adjacent-at");
+var get_rounded_up_down_1 = require("@writetome51/get-rounded-up-down");
 var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var in_range_1 = require("@writetome51/in-range");
-var get_rounded_up_down_1 = require("@writetome51/get-rounded-up-down");
 var not_1 = require("@writetome51/not");
+var public_array_container_1 = require("@writetome51/public-array-container");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
     function ArrayPaginator(data, // the actual array, represented by inherited property this.data
@@ -36,7 +36,7 @@ var ArrayPaginator = /** @class */ (function (_super) {
             return this.__itemsPerPage;
         },
         set: function (value) {
-            errorIfNotInteger_1.errorIfNotInteger(value);
+            error_if_not_integer_1.errorIfNotInteger(value);
             if (value < 1)
                 throw new Error('The number of items per page must be at least 1');
             this.__itemsPerPage = value;
