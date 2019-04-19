@@ -6,7 +6,17 @@ import { arraysMatch } from '@writetome51/arrays-match';
 // Setup:
 let paginator = new ArrayPaginator(getCountup(1, 55));
 // now paginator.data has numbers 1 thru 55, and itemsPerPage = 25.
-let currentPageResults = [];
+
+// Test 0: trying to get currentPage before giving currentPageNumber a value should trigger error:
+let errorTriggered = false;
+try{
+	let x = paginator.currentPage;
+}
+catch (e) {
+	errorTriggered = true;
+}
+if (errorTriggered) console.log('test 0 passed');
+else console.log('test 0 FAILED');
 
 
 // Test 1: make sure paginator.currentPage contains the right items:
@@ -29,14 +39,17 @@ else console.log('test 1 FAILED');
 // the itemsPerPage is different:
 
 paginator.itemsPerPage = 15;
-page1 = paginator.getPage(1);
-currentPageResults.push(paginator.currentPageNumber);
-page2 = paginator.getPage(2);
-currentPageResults.push(paginator.currentPageNumber);
-page3 = paginator.getPage(3);
-currentPageResults.push(paginator.currentPageNumber);
-let page4 = paginator.getPage(4);
-currentPageResults.push(paginator.currentPageNumber);
+paginator.currentPageNumber = 1;
+page1 = paginator.currentPage;
+
+paginator.currentPageNumber = 2;
+page2 = paginator.currentPage;
+
+paginator.currentPageNumber = 3;
+page3 = paginator.currentPage;
+
+paginator.currentPageNumber = 4;
+let page4 = paginator.currentPage;
 
 if (arraysMatch(page1, getCountup(1, 15)) &&
 	arraysMatch(page2, getCountup(16, 30)) &&
@@ -45,11 +58,11 @@ if (arraysMatch(page1, getCountup(1, 15)) &&
 else console.log('test 2 FAILED');
 
 
-// Test 3:  if a pageIndex that doesn't exist is passed to .getPage() it should trigger
+// Test 3:  if a page number that doesn't exist is passed to currentPageNumber it should trigger
 // error:
-let errorTriggered = false;
+errorTriggered = false;
 try {
-	let page6 = paginator.getPage(6);
+	paginator.currentPageNumber = 5;
 }
 catch (e) {
 	errorTriggered = true;
@@ -64,16 +77,16 @@ let results = [];
 let expectedResults = [1, 2, 4, 3];
 paginator.data = [1, 2, 3, 4, 5];
 paginator.itemsPerPage = 5;
-results.push(paginator.totalPages);
+results.push(paginator.totalPages); // should be 1.
 paginator.data = [1, 2];
 paginator.itemsPerPage = 1;
-results.push(paginator.totalPages);
+results.push(paginator.totalPages); // should be 2.
 paginator.data = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]; // 10
 paginator.itemsPerPage = 3;
-results.push(paginator.totalPages);
+results.push(paginator.totalPages); // should be 4.
 paginator.data = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]; // 20
 paginator.itemsPerPage = 9;
-results.push(paginator.totalPages);
+results.push(paginator.totalPages); // should be 3.
 
 if (arraysMatch(results, expectedResults)) console.log('test 4 passed');
 else console.log('test 4 FAILED.');
@@ -164,7 +177,7 @@ else console.log('test 9 FAILED');
 errorTriggered = false;
 try {
 	paginator = new ArrayPaginator([], 1);
-	paginator.getPage(0);
+	paginator.currentPageNumber = 1;
 }
 catch (e) {
 	errorTriggered = true;
@@ -173,11 +186,11 @@ if (errorTriggered) console.log('test 10 passed');
 else console.log('test 10 FAILED');
 
 
-// Test 11: if array is empty and you try to get a negative page index, it triggers error:
+// Test 11: if array is empty and you try to get a negative page number, it triggers error:
 errorTriggered = false;
 try {
 	paginator = new ArrayPaginator([], 1);
-	paginator.getPage(-1);
+	paginator.currentPageNumber = -1;
 }
 catch (e) {
 	errorTriggered = true;
@@ -188,6 +201,9 @@ else console.log('test 11 FAILED');
 
 // Test 12: if itemsPerPage is greater than array length, it simply returns the entire array:
 paginator = new ArrayPaginator([1, 2, 3, 4, 5], 12);
-page1 = paginator.getPage(0);
-if (arraysMatch(page1, [1, 2, 3, 4, 5])) console.log('test 12 passed');
+paginator.currentPageNumber = 1;
+if (arraysMatch(paginator.currentPage, [1, 2, 3, 4, 5])) console.log('test 12 passed');
 else console.log('test 12 FAILED');
+
+if (arraysMatch(paginator.currentPage, paginator.data)) console.log('test 13 passed');
+else console.log('test 13 FAILED');

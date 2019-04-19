@@ -19,9 +19,12 @@ var get_rounded_up_down_1 = require("@writetome51/get-rounded-up-down");
 var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var in_range_1 = require("@writetome51/in-range");
 var not_1 = require("@writetome51/not");
+var has_value_no_value_1 = require("@writetome51/has-value-no-value");
 var public_array_container_1 = require("@writetome51/public-array-container");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
+    // currentPage: any[]; (read-only)
+    // totalPages: number; (read-only)
     function ArrayPaginator(data, // the actual array, represented by inherited property this.data
     __itemsPerPage) {
         if (data === void 0) { data = []; }
@@ -46,19 +49,21 @@ var ArrayPaginator = /** @class */ (function (_super) {
     });
     Object.defineProperty(ArrayPaginator.prototype, "currentPageNumber", {
         get: function () {
-            return this._currentPageNumber;
+            if (has_value_no_value_1.noValue(this.__currentPageNumber))
+                throw new Error("The property 'currentPageNumber' must be given a value first.");
+            return this.__currentPageNumber;
         },
         // Setting this.currentPageNumber causes this.currentPage to update.
         set: function (value) {
             this.__errorIfRequestedPageDoesNotExist(value);
-            this._currentPageNumber = value;
+            this.__currentPageNumber = value;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ArrayPaginator.prototype, "currentPage", {
         get: function () {
-            return this.__getPage(this._currentPageNumber);
+            return this.__getPage(this.currentPageNumber);
         },
         enumerable: true,
         configurable: true

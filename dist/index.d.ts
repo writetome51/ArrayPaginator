@@ -3,8 +3,15 @@ import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 export declare class ArrayPaginator extends PublicArrayContainer {
 
+
+	itemsPerPage: number;
+	currentPageNumber: number;
+	readonly currentPage: any[];
+	readonly totalPages: number;
+
 	private __itemsPerPage;
-	protected _currentPageNumber: number;
+	private __currentPageNumber;
+
 
 
 	constructor(
@@ -13,11 +20,8 @@ export declare class ArrayPaginator extends PublicArrayContainer {
 	);
 
 
-	currentPageNumber: number;
-	readonly currentPage: any[];
-	itemsPerPage: number;
-	readonly totalPages: number;
 	private __getPage;
 	private __errorIfRequestedPageDoesNotExist;
 	private __isLastPage;
+
 }

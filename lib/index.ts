@@ -4,13 +4,18 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 import { getTail } from '@writetome51/array-get-head-tail';
 import { inRange } from '@writetome51/in-range';
 import { not } from '@writetome51/not';
+import { noValue } from '@writetome51/has-value-no-value';
 import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 
 export class ArrayPaginator extends PublicArrayContainer {
 
+	// itemsPerPage: number; (25 by default)
 	// currentPageNumber: number
-	protected _currentPageNumber: number;
+	private __currentPageNumber: number;
+
+	// currentPage: any[]; (read-only)
+	// totalPages: number; (read-only)
 
 
 	constructor(
@@ -39,17 +44,20 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	set currentPageNumber(value) {
 		this.__errorIfRequestedPageDoesNotExist(value);
-		this._currentPageNumber = value;
+		this.__currentPageNumber = value;
 	}
 
 
 	get currentPageNumber(): number {
-		return this._currentPageNumber;
+		if (noValue(this.__currentPageNumber)) throw new Error(
+			`The property 'currentPageNumber' must be given a value first.`
+		);
+		return this.__currentPageNumber;
 	}
 
 
 	get currentPage(): any[] {
-		return this.__getPage(this._currentPageNumber);
+		return this.__getPage(this.currentPageNumber);
 	}
 
 

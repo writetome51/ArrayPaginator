@@ -12,15 +12,12 @@ constructor(data? = [], itemsPerPage? = 25)
 
 ## Properties
 ```
-data : any[]  // the actual array.
+data : any[]  // the array to be paginated.
 
 itemsPerPage : integer // default is 25
 
 currentPageNumber : integer
     // Giving this a value causes this.currentPage to update.
-    
-protected _currentPageNumber: integer
-    // is available in case a subclass wants to use it.
 
 currentPage : any[] (read-only)
     // All array items in the current page.
@@ -31,10 +28,7 @@ className : string (read-only)
 ```
 
 ## Methods
-```
-getPage(pageIndex) : any[]
-    // returns a sub-array of items copied from entire array.
-``` 
+ 
 The methods below are not important to know about in order to use this  
 class.  They're inherited from [BaseClass](https://github.com/writetome51/typescript-base-class#baseclass) .
 ``` 
