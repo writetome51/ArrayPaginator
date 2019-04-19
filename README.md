@@ -5,13 +5,13 @@ A TypeScript/Javascript class for paginating an array.
 
 ## Constructor
 
-```
+```ts
 constructor(data? = [], itemsPerPage? = 25)
     // param 'data' is the array being paginated.
 ```
 
 ## Properties
-```
+```ts
 data : any[]  // the array to be paginated.
 
 itemsPerPage : integer // default is 25
@@ -31,7 +31,7 @@ className : string (read-only)
  
 The methods below are not important to know about in order to use this  
 class.  They're inherited from [BaseClass](https://github.com/writetome51/typescript-base-class#baseclass) .
-``` 
+```ts
 protected   _createGetterAndOrSetterForEach(
                   propertyNames: string[],
                   configuration: IGetterSetterConfiguration
@@ -73,24 +73,22 @@ protected   _runMethod_and_returnThis(
 
 ## Usage
 
-```
+```ts
 // Getting an instance:
 let paginator = new ArrayPaginator(theArray, itemsPerPage); 
-
-// Getting a page:
-let page = paginator.getPage(pageIndex);  // page indexes begin at 0.
-
-// Assigning it a new array:  
-paginator.data = [item1, item2, item3, ...]
 
 // Changing number of items per page:  
 paginator.itemsPerPage = 15;
 
+// Getting a page:
+paginator.currentPageNumber = 2;
+console.log(paginator.currentPage); // shows all items in page 2.
+
+// Assigning it a new array:  
+paginator.data = [item1, item2, item3, item4]; // ...and so on.
+
 // Getting the total number of pages:  
 let totalPages = paginator.totalPages;
-
-// Getting the current page number:  
-let currentPageNumber = paginator.currentPageNumber;
 ```
 
 ## Inheritance Chain
@@ -107,7 +105,7 @@ npm install @writetome51/array-paginator
 
 ## Loading
 
-```
+```ts
 // If using TypeScript:
 import {ArrayPaginator} from '@writetome51/array-paginator';
 // If using ES5 JavaScript:
