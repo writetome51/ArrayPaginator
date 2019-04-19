@@ -9,35 +9,33 @@ let paginator = new ArrayPaginator(getCountup(1, 55));
 let currentPageResults = [];
 
 
-// Test 1: make sure paginator.getPage(index) returns the right items:
-let page1 = paginator.getPage(0);
-currentPageResults.push(paginator.currentPageNumber); // records current page.
-let page2 = paginator.getPage(1);
-currentPageResults.push(paginator.currentPageNumber); // records current page.
-let page3 = paginator.getPage(2);
-currentPageResults.push(paginator.currentPageNumber); // records current page.
+// Test 1: make sure paginator.currentPage contains the right items:
+paginator.currentPageNumber = 1;
+let page1 = paginator.currentPage;
+
+paginator.currentPageNumber = 2;
+let page2 = paginator.currentPage;
+
+paginator.currentPageNumber = 3;
+let page3 = paginator.currentPage;
 
 if (arraysMatch(page1, getCountup(1, 25)) &&
 	arraysMatch(page2, getCountup(26, 50)) &&
 	arraysMatch(page3, getCountup(51, 55))) console.log('test 1 passed');
 else console.log('test 1 FAILED');
 
-// Test 1A:  make sure currentPageNumber results are accurate:
-if (arraysMatch(currentPageResults, [1,2,3])) console.log('test 1A passed');
-else console.log('test 1A FAILED');
 
-
-// Test 2:  make sure paginator.getPage(index) returns the right items when
+// Test 2:  make sure paginator.currentPage contains the right items when
 // the itemsPerPage is different:
-currentPageResults = [];
+
 paginator.itemsPerPage = 15;
-page1 = paginator.getPage(0);
+page1 = paginator.getPage(1);
 currentPageResults.push(paginator.currentPageNumber);
-page2 = paginator.getPage(1);
+page2 = paginator.getPage(2);
 currentPageResults.push(paginator.currentPageNumber);
-page3 = paginator.getPage(2);
+page3 = paginator.getPage(3);
 currentPageResults.push(paginator.currentPageNumber);
-let page4 = paginator.getPage(3);
+let page4 = paginator.getPage(4);
 currentPageResults.push(paginator.currentPageNumber);
 
 if (arraysMatch(page1, getCountup(1, 15)) &&
@@ -45,10 +43,6 @@ if (arraysMatch(page1, getCountup(1, 15)) &&
 	arraysMatch(page3, getCountup(31, 45)) &&
 	arraysMatch(page4, getCountup(46, 55))) console.log('test 2 passed');
 else console.log('test 2 FAILED');
-
-// Test 2A:  make sure currentPageNumber results are accurate:
-if (arraysMatch(currentPageResults, [1,2,3,4])) console.log('test 2A passed');
-else console.log('test 2A FAILED');
 
 
 // Test 3:  if a pageIndex that doesn't exist is passed to .getPage() it should trigger

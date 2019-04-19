@@ -14,16 +14,18 @@ constructor(data? = [], itemsPerPage? = 25)
 ```
 data : any[]  // the actual array.
 
-itemsPerPage : integer 
+itemsPerPage : integer // default is 25
 
-totalPages :  integer (read-only)
-
-currentPageNumber : integer (read-only)
-    // is undefined until this.getPage() is called.
-    // Its value only changes when this.getPage() is called.
+currentPageNumber : integer
+    // Giving this a value causes this.currentPage to update.
     
 protected _currentPageNumber: integer
     // is available in case a subclass wants to use it.
+
+currentPage : any[] (read-only)
+    // All array items in the current page.
+
+totalPages :  integer (read-only)
 
 className : string (read-only)
 ```

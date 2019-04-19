@@ -9,10 +9,7 @@ import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 export class ArrayPaginator extends PublicArrayContainer {
 
-	// Is undefined until this.getPage() is called.
-	// Its value only changes when this.getPage() is called.
-	// public currentPageNumber: number  // read-only
-
+	// currentPageNumber: number
 	protected _currentPageNumber: number;
 
 
@@ -21,7 +18,7 @@ export class ArrayPaginator extends PublicArrayContainer {
 		private __itemsPerPage = 25
 	) {
 		super(data);
-		this.itemsPerPage = this.__itemsPerPage; // __itemsPerPage gets validated.
+		this.itemsPerPage = this.__itemsPerPage;  // __itemsPerPage gets validated.
 	}
 
 
@@ -38,8 +35,11 @@ export class ArrayPaginator extends PublicArrayContainer {
 	}
 
 
-	get totalPages(): number {
-		return getRoundedUp(this.data.length / this.itemsPerPage);
+	// Setting this.currentPageNumber causes this.currentPage to update.
+
+	set currentPageNumber(value) {
+		this.__errorIfRequestedPageDoesNotExist(value);
+		this._currentPageNumber = value;
 	}
 
 
@@ -48,32 +48,42 @@ export class ArrayPaginator extends PublicArrayContainer {
 	}
 
 
-	// the main feature of this class:
+	get currentPage(): any[] {
+		return this.__getPage(this._currentPageNumber);
+	}
 
-	getPage(pageIndex): any[] {
-		this.__errorIfRequestedPageDoesNotExist(pageIndex);
-		this._currentPageNumber = (pageIndex + 1);
 
-		const firstIndexToGet = this.itemsPerPage * pageIndex;
+	get totalPages(): number {
+		return getRoundedUp(this.data.length / this.itemsPerPage);
+	}
 
-		if (this.__isLastPage(pageIndex)) {
+
+	private __getPage(pageNumber): any[] {
+
+		const firstIndexToGet = (this.itemsPerPage * (pageNumber - 1));
+
+		if (this.__isLastPage(pageNumber)) {
+
 			// ...only return the remaining items in array, not this.itemsPerPage:
-			return getTail((this.data.length - firstIndexToGet), this.data);
+			let numItemsToGet = (this.data.length - firstIndexToGet);
+			return getTail(numItemsToGet, this.data);
 		}
 		else return getAdjacentAt(firstIndexToGet, this.itemsPerPage, this.data);
 	}
 
 
-	private __errorIfRequestedPageDoesNotExist(pageIndex) {
+	private __errorIfRequestedPageDoesNotExist(pageNumber) {
+		errorIfNotInteger(pageNumber);
+
 		let totalPages = this.totalPages; // So it only calls getter function once.
-		if (totalPages === 0 || not(inRange([0, totalPages - 1], pageIndex))) {
+		if (totalPages === 0 || not(inRange([1, totalPages], pageNumber))) {
 			throw new Error('The requested page does not exist');
 		}
 	}
 
 
-	private __isLastPage(pageIndex): boolean {
-		return (pageIndex === (this.totalPages - 1));
+	private __isLastPage(pageNumber): boolean {
+		return (pageNumber === this.totalPages);
 	}
 
 

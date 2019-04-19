@@ -44,6 +44,25 @@ var ArrayPaginator = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ArrayPaginator.prototype, "currentPageNumber", {
+        get: function () {
+            return this._currentPageNumber;
+        },
+        // Setting this.currentPageNumber causes this.currentPage to update.
+        set: function (value) {
+            this.__errorIfRequestedPageDoesNotExist(value);
+            this._currentPageNumber = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ArrayPaginator.prototype, "currentPage", {
+        get: function () {
+            return this.__getPage(this._currentPageNumber);
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ArrayPaginator.prototype, "totalPages", {
         get: function () {
             return get_rounded_up_down_1.getRoundedUp(this.data.length / this.itemsPerPage);
@@ -51,33 +70,25 @@ var ArrayPaginator = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ArrayPaginator.prototype, "currentPageNumber", {
-        get: function () {
-            return this._currentPageNumber;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    // the main feature of this class:
-    ArrayPaginator.prototype.getPage = function (pageIndex) {
-        this.__errorIfRequestedPageDoesNotExist(pageIndex);
-        this._currentPageNumber = (pageIndex + 1);
-        var firstIndexToGet = this.itemsPerPage * pageIndex;
-        if (this.__isLastPage(pageIndex)) {
+    ArrayPaginator.prototype.__getPage = function (pageNumber) {
+        var firstIndexToGet = (this.itemsPerPage * (pageNumber - 1));
+        if (this.__isLastPage(pageNumber)) {
             // ...only return the remaining items in array, not this.itemsPerPage:
-            return array_get_head_tail_1.getTail((this.data.length - firstIndexToGet), this.data);
+            var numItemsToGet = (this.data.length - firstIndexToGet);
+            return array_get_head_tail_1.getTail(numItemsToGet, this.data);
         }
         else
             return array_get_adjacent_at_1.getAdjacentAt(firstIndexToGet, this.itemsPerPage, this.data);
     };
-    ArrayPaginator.prototype.__errorIfRequestedPageDoesNotExist = function (pageIndex) {
+    ArrayPaginator.prototype.__errorIfRequestedPageDoesNotExist = function (pageNumber) {
+        error_if_not_integer_1.errorIfNotInteger(pageNumber);
         var totalPages = this.totalPages; // So it only calls getter function once.
-        if (totalPages === 0 || not_1.not(in_range_1.inRange([0, totalPages - 1], pageIndex))) {
+        if (totalPages === 0 || not_1.not(in_range_1.inRange([1, totalPages], pageNumber))) {
             throw new Error('The requested page does not exist');
         }
     };
-    ArrayPaginator.prototype.__isLastPage = function (pageIndex) {
-        return (pageIndex === (this.totalPages - 1));
+    ArrayPaginator.prototype.__isLastPage = function (pageNumber) {
+        return (pageNumber === this.totalPages);
     };
     return ArrayPaginator;
 }(public_array_container_1.PublicArrayContainer));
