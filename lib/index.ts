@@ -10,12 +10,8 @@ import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 export class ArrayPaginator extends PublicArrayContainer {
 
-	// itemsPerPage: number; (25 by default)
-	// currentPageNumber: number
-	private __currentPageNumber: number;
 
-	// currentPage: any[]; (read-only)
-	// totalPages: number; (read-only)
+	private __currentPageNumber: number;
 
 
 	constructor(

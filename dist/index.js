@@ -23,8 +23,6 @@ var has_value_no_value_1 = require("@writetome51/has-value-no-value");
 var public_array_container_1 = require("@writetome51/public-array-container");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
-    // currentPage: any[]; (read-only)
-    // totalPages: number; (read-only)
     function ArrayPaginator(data, // the actual array, represented by inherited property this.data
     __itemsPerPage) {
         if (data === void 0) { data = []; }

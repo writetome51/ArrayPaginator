@@ -11,6 +11,9 @@ constructor(data? = [], itemsPerPage? = 25)
 ```
 
 ## Properties
+<details>
+<summary>view properties</summary>
+
 ```ts
 data : any[]  // the array to be paginated.
 
@@ -26,8 +29,12 @@ totalPages :  integer (read-only)
 
 className : string (read-only)
 ```
+</details>
+
 
 ## Methods
+<details>
+<summary>view methods</summary>
  
 The methods below are not important to know about in order to use this  
 class.  They're inherited from [BaseClass](https://github.com/writetome51/typescript-base-class#baseclass) .
@@ -63,15 +70,19 @@ protected   _returnThis_after(voidExpression: any) : this
     // voidExpression is executed, then function returns this.
     // Even if voidExpression returns something, the returned data isn't used.
 
-protected   _runMethod_and_returnThis(
-    callingObject, 
-    method: Function, 
-    methodArgs: any[], 
-    additionalAction?: Function // takes the result returned by method as an argument.
-) : this
-```   
+protected   _errorIfPropertyHasNoValue(
+                property: string, // can contain dot-notation, i.e., 'property.subproperty'
+                propertyNameInError? = ''
+            ) : void
+    // If value of this[property] is undefined or null, it triggers fatal error:
+    // `The property "${propertyNameInError}" has no value.`
+```
+</details>  
+
 
 ## Usage
+<details>
+<summary>view usage</summary>
 
 ```ts
 // Getting an instance:
@@ -90,6 +101,8 @@ paginator.data = [item1, item2, item3, item4]; // ...and so on.
 // Getting the total number of pages:  
 let totalPages = paginator.totalPages;
 ```
+</details>
+
 
 ## Inheritance Chain
 
@@ -97,10 +110,8 @@ ArrayPaginator<--[PublicArrayContainer](https://github.com/writetome51/public-ar
 
 ## Installation
 
-You must have npm installed first.  Then, in the command line:
-
 ```bash
-npm install @writetome51/array-paginator
+npm i  @writetome51/array-paginator
 ```
 
 ## Loading
