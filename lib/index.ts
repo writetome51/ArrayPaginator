@@ -4,7 +4,7 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 import { getTail } from '@writetome51/array-get-head-tail';
 import { inRange } from '@writetome51/in-range';
 import { not } from '@writetome51/not';
-import { noValue } from '@writetome51/has-value-no-value';
+import { hasValue } from '@writetome51/has-value-no-value';
 import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 
@@ -12,18 +12,51 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 
 	private __currentPageNumber: number;
+	private __itemsPerPage: number;
 
 
 	constructor(
-		data = [], // the actual array, represented by inherited property this.data
-		private __itemsPerPage = 25
+		data = [], // the actual array, becoming inherited property this.data
+		itemsPerPage = 25
 	) {
 		super(data);
-		this.itemsPerPage = this.__itemsPerPage;  // __itemsPerPage gets validated.
+		this.__set__itemsPerPage(itemsPerPage);
 	}
 
 
-	set itemsPerPage(value) {
+	getPage(
+		currentPageNumber: number, options?: { itemsPerPage: number }
+	): any[] {
+
+		this.__setProperties(currentPageNumber, options.itemsPerPage);
+
+		const firstIndexToGet = (this.__itemsPerPage * (currentPageNumber - 1));
+
+		if (this.__isLastPage(currentPageNumber)) return this.__getRemainingItems(firstIndexToGet);
+
+		else return getAdjacentAt(firstIndexToGet, this.__itemsPerPage, this.data);
+	}
+
+
+	getCurrentPageNumber(): number {
+		return this.__currentPageNumber;
+	}
+
+
+	getTotalPages(): number {
+		return getRoundedUp(this.data.length / this.__itemsPerPage);
+	}
+
+
+	private __setProperties(__currentPageNumber, __itemsPerPage = undefined) {
+		if (hasValue(__itemsPerPage)) this.__set__itemsPerPage(__itemsPerPage);
+
+		this.__errorIfRequestedPageDoesNotExist(__currentPageNumber);
+		this.__currentPageNumber = __currentPageNumber;
+	}
+
+
+	private __set__itemsPerPage(value) {
 		errorIfNotInteger(value);
 		if (value < 1) throw new Error('The number of items per page must be at least 1');
 
@@ -31,63 +64,23 @@ export class ArrayPaginator extends PublicArrayContainer {
 	}
 
 
-	get itemsPerPage(): number {
-		return this.__itemsPerPage;
-	}
-
-
-	// Setting this.currentPageNumber causes this.currentPage to update.
-
-	set currentPageNumber(value) {
-		this.__errorIfRequestedPageDoesNotExist(value);
-		this.__currentPageNumber = value;
-	}
-
-
-	get currentPageNumber(): number {
-		if (noValue(this.__currentPageNumber)) throw new Error(
-			`The property 'currentPageNumber' must be given a value first.`
-		);
-		return this.__currentPageNumber;
-	}
-
-
-	get currentPage(): any[] {
-		return this.__getPage(this.currentPageNumber);
-	}
-
-
-	get totalPages(): number {
-		return getRoundedUp(this.data.length / this.itemsPerPage);
-	}
-
-
-	private __getPage(pageNumber): any[] {
-
-		const firstIndexToGet = (this.itemsPerPage * (pageNumber - 1));
-
-		if (this.__isLastPage(pageNumber)) {
-
-			// ...only return the remaining items in array, not this.itemsPerPage:
-			let numItemsToGet = (this.data.length - firstIndexToGet);
-			return getTail(numItemsToGet, this.data);
-		}
-		else return getAdjacentAt(firstIndexToGet, this.itemsPerPage, this.data);
-	}
-
-
 	private __errorIfRequestedPageDoesNotExist(pageNumber) {
-		errorIfNotInteger(pageNumber);
+		let totalPages = this.getTotalPages();
 
-		let totalPages = this.totalPages; // So it only calls getter function once.
 		if (totalPages === 0 || not(inRange([1, totalPages], pageNumber))) {
 			throw new Error('The requested page does not exist');
 		}
 	}
 
 
+	private __getRemainingItems(firstIndexToGet) {
+		let numItemsToGet = (this.data.length - firstIndexToGet);
+		return getTail(numItemsToGet, this.data);
+	}
+
+
 	private __isLastPage(pageNumber): boolean {
-		return (pageNumber === this.totalPages);
+		return (pageNumber === this.getTotalPages());
 	}
 
 

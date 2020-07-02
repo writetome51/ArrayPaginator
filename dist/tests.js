@@ -5,16 +5,10 @@ var get_countup_countdown_1 = require("@writetome51/get-countup-countdown");
 var arrays_match_1 = require("@writetome51/arrays-match");
 // Setup:
 var paginator = new index_1.ArrayPaginator(get_countup_countdown_1.getCountup(1, 55));
+console.log(paginator.getPage(1, { itemsPerPage: 5 }));
 // now paginator.data has numbers 1 thru 55, and itemsPerPage = 25.
 // Test 0: trying to get currentPage before giving currentPageNumber a value should trigger error:
-var errorTriggered = false;
-try {
-    var x = paginator.currentPage;
-}
-catch (e) {
-    errorTriggered = true;
-}
-if (errorTriggered)
+if (paginator.getTotalPages() === 3)
     console.log('test 0 passed');
 else
     console.log('test 0 FAILED');

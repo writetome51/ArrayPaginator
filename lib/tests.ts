@@ -5,17 +5,12 @@ import { arraysMatch } from '@writetome51/arrays-match';
 
 // Setup:
 let paginator = new ArrayPaginator(getCountup(1, 55));
+
+console.log(paginator.getPage(1, {itemsPerPage: 5}));
 // now paginator.data has numbers 1 thru 55, and itemsPerPage = 25.
 
 // Test 0: trying to get currentPage before giving currentPageNumber a value should trigger error:
-let errorTriggered = false;
-try{
-	let x = paginator.currentPage;
-}
-catch (e) {
-	errorTriggered = true;
-}
-if (errorTriggered) console.log('test 0 passed');
+if (paginator.getTotalPages() === 3) console.log('test 0 passed');
 else console.log('test 0 FAILED');
 
 
@@ -63,8 +58,7 @@ else console.log('test 2 FAILED');
 errorTriggered = false;
 try {
 	paginator.currentPageNumber = 5;
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 3 passed');
@@ -98,26 +92,22 @@ else console.log('test 4 FAILED.');
 let numErrors = 0;
 try {
 	paginator.itemsPerPage = false;
-}
-catch (e) {
+} catch (e) {
 	++numErrors;
 }
 try {
 	paginator.itemsPerPage = 1.2;
-}
-catch (e) {
+} catch (e) {
 	++numErrors;
 }
 try {
 	paginator.itemsPerPage = 0;
-}
-catch (e) {
+} catch (e) {
 	++numErrors;
 }
 try {
 	paginator.itemsPerPage = -0.1;
-}
-catch (e) {
+} catch (e) {
 	++numErrors;
 }
 
@@ -129,8 +119,7 @@ else console.log('test 5 FAILED');
 errorTriggered = false;
 try {
 	paginator.data = {};
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 6 passed');
@@ -141,8 +130,7 @@ else console.log('test 6 FAILED');
 errorTriggered = false;
 try {
 	paginator = new ArrayPaginator({prop: 1});
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 7 passed');
@@ -153,8 +141,7 @@ else console.log('test 7 FAILED');
 errorTriggered = false;
 try {
 	paginator = new ArrayPaginator([1, 2, 3], 1.05);
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 8 passed');
@@ -165,8 +152,7 @@ else console.log('test 8 FAILED');
 errorTriggered = false;
 try {
 	paginator = new ArrayPaginator([1, 2, 3], 0);
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 9 passed');
@@ -178,8 +164,7 @@ errorTriggered = false;
 try {
 	paginator = new ArrayPaginator([], 1);
 	paginator.currentPageNumber = 1;
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 10 passed');
@@ -191,8 +176,7 @@ errorTriggered = false;
 try {
 	paginator = new ArrayPaginator([], 1);
 	paginator.currentPageNumber = -1;
-}
-catch (e) {
+} catch (e) {
 	errorTriggered = true;
 }
 if (errorTriggered) console.log('test 11 passed');

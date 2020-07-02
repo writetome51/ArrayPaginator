@@ -17,17 +17,7 @@ constructor(data? = [], itemsPerPage? = 25)
 ```ts
 data : any[]  // the array to be paginated.
 
-itemsPerPage : integer // default is 25
-
-currentPageNumber : integer
-    // Giving this a value causes this.currentPage to update.
-
-currentPage : any[] (read-only)
-    // All array items in the current page.
-
-totalPages :  integer (read-only)
-
-className : string (read-only)
+className : string // read-only
 ```
 </details>
 
@@ -35,6 +25,16 @@ className : string (read-only)
 ## Methods
 <details>
 <summary>view methods</summary>
+ 
+ ```
+getPage(currentPageNumber, itemsPerPage? = undefined): any[]
+    // If `itemsPerPage` left undefined, most recent setting will be used.
+
+getCurrentPageNumber(): number
+
+getTotalPages(): number
+```
+ 
  
 The methods below are not important to know about in order to use this  
 class.  They're inherited from [BaseClass](https://github.com/writetome51/typescript-base-class#baseclass) .
@@ -86,20 +86,23 @@ protected   _errorIfPropertyHasNoValue(
 
 ```ts
 // Getting an instance:
-let paginator = new ArrayPaginator(theArray, itemsPerPage); 
-
-// Changing number of items per page:  
-paginator.itemsPerPage = 15;
+let paginator = new ArrayPaginator([1,2,3,4,5,6,7,8,9,10],  5);
 
 // Getting a page:
-paginator.currentPageNumber = 2;
-console.log(paginator.currentPage); // shows all items in page 2.
+paginator.getPage(1); // --> [1,2,3,4,5]
 
-// Assigning it a new array:  
-paginator.data = [item1, item2, item3, item4]; // ...and so on.
+// Getting page 2 and changing items per page to 4:
+paginator.getPage(2, {itemsPerPage: 4}); // --> [5,6,7,8]
+
+paginator.getCurrentPageNumber(); // --> 2
 
 // Getting the total number of pages:  
-let totalPages = paginator.totalPages;
+paginator.getTotalPages(); // --> 3
+
+// Assigning it a new array:  
+paginator.data = [item1, item2, item3, item4];
+
+
 ```
 </details>
 
