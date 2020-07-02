@@ -25,15 +25,13 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 
 	getPage(
-		pageNumber: number, options = { itemsPerPage: undefined }
+		pageNumber: number, options = {itemsPerPage: undefined}
 	): any[] {
-
 		this.__setProperties(pageNumber, options.itemsPerPage);
 
 		const firstIndexToGet = (this.__itemsPerPage * (pageNumber - 1));
 
 		if (this.__isLastPage(pageNumber)) return this.__getRemainingItems(firstIndexToGet);
-
 		else return getAdjacentAt(firstIndexToGet, this.__itemsPerPage, this.data);
 	}
 

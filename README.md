@@ -7,7 +7,7 @@ A TypeScript/Javascript class for paginating an array.
 
 ```ts
 constructor(
-    data? = [], // the actual array, becoming inherited property this.data
+    data? = [], // the actual array, becoming property this.data
     options?: { itemsPerPage: number } = {itemsPerPage: 25}
 ) 
 ```
