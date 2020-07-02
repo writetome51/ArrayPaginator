@@ -6,8 +6,10 @@ A TypeScript/Javascript class for paginating an array.
 ## Constructor
 
 ```ts
-constructor(data? = [], itemsPerPage? = 25)
-    // param 'data' is the array being paginated.
+constructor(
+    data? = [], // the actual array, becoming inherited property this.data
+    options?: { itemsPerPage: number } = {itemsPerPage: 25}
+) 
 ```
 
 ## Properties
@@ -27,10 +29,11 @@ className : string // read-only
 <summary>view methods</summary>
  
  ```
-getPage(currentPageNumber, itemsPerPage? = undefined): any[]
-    // If `itemsPerPage` left undefined, most recent setting will be used.
+getPage(pageNumber, options?: { itemsPerPage: number }): any[]
+    // If `itemsPerPage` is not provided, its most recent setting will be used.
 
 getCurrentPageNumber(): number
+    // returns page asked for in most recent call of this.getPage()
 
 getTotalPages(): number
 ```
@@ -86,30 +89,34 @@ protected   _errorIfPropertyHasNoValue(
 
 ```ts
 // Getting an instance:
-let paginator = new ArrayPaginator([1,2,3,4,5,6,7,8,9,10],  5);
+let paginator = new ArrayPaginator(
+    [1,2,3,4,5,6,7,8,9,10], 
+    {itemsPerPage: 5}
+);
 
-// Getting a page:
 paginator.getPage(1); // --> [1,2,3,4,5]
 
-// Getting page 2 and changing items per page to 4:
+paginator.getCurrentPageNumber(); // --> 1
+
+paginator.getTotalPages(); // --> 2
+
 paginator.getPage(2, {itemsPerPage: 4}); // --> [5,6,7,8]
 
 paginator.getCurrentPageNumber(); // --> 2
 
-// Getting the total number of pages:  
 paginator.getTotalPages(); // --> 3
 
-// Assigning it a new array:  
+// Assigning it a new array to paginate:  
 paginator.data = [item1, item2, item3, item4];
-
-
 ```
 </details>
 
 
 ## Inheritance Chain
 
-ArrayPaginator<--[PublicArrayContainer](https://github.com/writetome51/public-array-container#publicarraycontainer)<--[BaseClass](https://github.com/writetome51/typescript-base-class#baseclass)
+ArrayPaginator
+<--[PublicArrayContainer](https://github.com/writetome51/public-array-container#publicarraycontainer)
+<--[BaseClass](https://github.com/writetome51/typescript-base-class#baseclass)
 
 ## Installation
 

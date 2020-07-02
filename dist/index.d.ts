@@ -9,13 +9,13 @@ export declare class ArrayPaginator extends PublicArrayContainer {
 
 	constructor(
 		data?: any[], // the actual array, becoming inherited property this.data
-		itemsPerPage?: number
+		options?: { itemsPerPage: number }
 	);
 
 
 	getPage(
-		currentPageNumber: number,
-		options?: { itemsPerPage: number; }
+		pageNumber: number,
+		options?: { itemsPerPage: any; }
 	): any[];
 
 

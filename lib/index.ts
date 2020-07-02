@@ -17,22 +17,22 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 	constructor(
 		data = [], // the actual array, becoming inherited property this.data
-		itemsPerPage = 25
+		options: { itemsPerPage: number } = {itemsPerPage: 25}
 	) {
 		super(data);
-		this.__set__itemsPerPage(itemsPerPage);
+		this.__set__itemsPerPage(options.itemsPerPage);
 	}
 
 
 	getPage(
-		currentPageNumber: number, options?: { itemsPerPage: number }
+		pageNumber: number, options = { itemsPerPage: undefined }
 	): any[] {
 
-		this.__setProperties(currentPageNumber, options.itemsPerPage);
+		this.__setProperties(pageNumber, options.itemsPerPage);
 
-		const firstIndexToGet = (this.__itemsPerPage * (currentPageNumber - 1));
+		const firstIndexToGet = (this.__itemsPerPage * (pageNumber - 1));
 
-		if (this.__isLastPage(currentPageNumber)) return this.__getRemainingItems(firstIndexToGet);
+		if (this.__isLastPage(pageNumber)) return this.__getRemainingItems(firstIndexToGet);
 
 		else return getAdjacentAt(firstIndexToGet, this.__itemsPerPage, this.data);
 	}

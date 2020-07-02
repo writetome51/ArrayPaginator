@@ -24,17 +24,18 @@ var public_array_container_1 = require("@writetome51/public-array-container");
 var ArrayPaginator = /** @class */ (function (_super) {
     __extends(ArrayPaginator, _super);
     function ArrayPaginator(data, // the actual array, becoming inherited property this.data
-    itemsPerPage) {
+    options) {
         if (data === void 0) { data = []; }
-        if (itemsPerPage === void 0) { itemsPerPage = 25; }
+        if (options === void 0) { options = { itemsPerPage: 25 }; }
         var _this = _super.call(this, data) || this;
-        _this.__set__itemsPerPage(itemsPerPage);
+        _this.__set__itemsPerPage(options.itemsPerPage);
         return _this;
     }
-    ArrayPaginator.prototype.getPage = function (currentPageNumber, options) {
-        this.__setProperties(currentPageNumber, options.itemsPerPage);
-        var firstIndexToGet = (this.__itemsPerPage * (currentPageNumber - 1));
-        if (this.__isLastPage(currentPageNumber))
+    ArrayPaginator.prototype.getPage = function (pageNumber, options) {
+        if (options === void 0) { options = { itemsPerPage: undefined }; }
+        this.__setProperties(pageNumber, options.itemsPerPage);
+        var firstIndexToGet = (this.__itemsPerPage * (pageNumber - 1));
+        if (this.__isLastPage(pageNumber))
             return this.__getRemainingItems(firstIndexToGet);
         else
             return array_get_adjacent_at_1.getAdjacentAt(firstIndexToGet, this.__itemsPerPage, this.data);
