@@ -8,8 +8,8 @@ A TypeScript/Javascript class for paginating an array.
 ```ts
 constructor(
     data: any[], // the actual array, becoming this.data
-   
-    __pageInfo: {
+
+    __pageConfigurator: {
         setItemsPerPage: (num) => void;
         getItemsPerPage: () => number;
     }
@@ -91,20 +91,31 @@ protected   _errorIfPropertyHasNoValue(
 <summary>view usage</summary>
 
 ```ts
+// Create a pageConfigurator:
+
+let pageConfigurator = {
+	__itemsPerPage: undefined,
+
+	setItemsPerPage: (num) => {
+		this.__itemsPerPage = num;
+	},
+	getItemsPerPage: () => this.__itemsPerPage
+};
+
 // Getting an instance:
 let paginator = new ArrayPaginator(
     [1,2,3,4,5,6,7,8,9,10], 
-    pageInfo
+    pageConfigurator
 );
 
-pageInfo.setItemsPerPage(5);
+pageConfigurator.setItemsPerPage(5);
 paginator.getPage(1); // --> [1,2,3,4,5]
 
 paginator.getCurrentPageNumber(); // --> 1
 
 paginator.getTotalPages(); // --> 2
 
-pageInfo.setItemsPerPage(4);
+pageConfigurator.setItemsPerPage(4);
 paginator.getPage(2); // --> [5,6,7,8]
 
 paginator.getCurrentPageNumber(); // --> 2

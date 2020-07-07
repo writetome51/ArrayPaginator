@@ -11,22 +11,24 @@ export class ArrayPaginator extends PublicArrayContainer {
 	constructor(
 		data = [], // the actual array, becoming inherited property this.data
 
-		private __pageInfo: {
+		private __pageConfigurator: {
 			setItemsPerPage: (num) => void;
 			getItemsPerPage: () => number;
 		}
 	) {
 		super(data);
 
-		if (!(this.__pageInfo.setItemsPerPage) || !(this.__pageInfo.getItemsPerPage)){
-			throw new Error('__pageInfo must have methods setItemsPerPage() and getItemsPerPage()');
+		if (!(this.__pageConfigurator.setItemsPerPage) || !(this.__pageConfigurator.getItemsPerPage)) {
+			throw new Error(
+				`__pageConfigurator must have methods setItemsPerPage() and getItemsPerPage()`
+			);
 		}
 	}
 
 
 	getPage(pageNumber): any[] {
 		this.__currentPageNumber = pageNumber;
-		let itemsPerPage = this.__pageInfo.getItemsPerPage();
+		let itemsPerPage = this.__pageConfigurator.getItemsPerPage();
 
 		return getPage(pageNumber, itemsPerPage, this.data);
 	}
@@ -38,7 +40,7 @@ export class ArrayPaginator extends PublicArrayContainer {
 
 
 	getTotalPages(): number {
-		return getRoundedUp(this.data.length / this.__pageInfo.getItemsPerPage());
+		return getRoundedUp(this.data.length / this.__pageConfigurator.getItemsPerPage());
 	}
 
 }

@@ -4,7 +4,7 @@ import { arraysMatch } from '@writetome51/arrays-match';
 
 
 // Setup:
-let pageInfo = {
+let pageConfigurator = {
 	__itemsPerPage: undefined,
 
 	setItemsPerPage: (num) => {
@@ -14,8 +14,8 @@ let pageInfo = {
 	getItemsPerPage: () => this.__itemsPerPage
 };
 
-pageInfo.setItemsPerPage(25);
-let paginator = new ArrayPaginator(getCountup(1, 55), pageInfo);
+pageConfigurator.setItemsPerPage(25);
+let paginator = new ArrayPaginator(getCountup(1, 55), pageConfigurator);
 
 // now paginator.data has numbers 1 thru 55, and itemsPerPage = 25.
 
@@ -39,7 +39,7 @@ else console.log('test 1 FAILED');
 
 // Test 2:  make sure paginator.getPage() returns the right items when
 // the itemsPerPage is different:
-pageInfo.setItemsPerPage(15);
+pageConfigurator.setItemsPerPage(15);
 let currentPageResults = [];
 
 page1 = paginator.getPage(1);
@@ -83,19 +83,19 @@ let results = [];
 let expectedResults = [1, 2, 4, 3];
 
 paginator.data = [1, 2, 3, 4, 5];
-pageInfo.setItemsPerPage(5);
+pageConfigurator.setItemsPerPage(5);
 results.push(paginator.getTotalPages()); // should be 1.
 
 paginator.data = [1, 2];
-pageInfo.setItemsPerPage(1);
+pageConfigurator.setItemsPerPage(1);
 results.push(paginator.getTotalPages()); // should be 2.
 
 paginator.data = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]; // 10
-pageInfo.setItemsPerPage(3);
+pageConfigurator.setItemsPerPage(3);
 results.push(paginator.getTotalPages()); // should be 4.
 
 paginator.data = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]; // 21
-pageInfo.setItemsPerPage(9);
+pageConfigurator.setItemsPerPage(9);
 results.push(paginator.getTotalPages()); // should be 3.
 
 if (arraysMatch(results, expectedResults)) console.log('test 4 passed');
@@ -107,19 +107,19 @@ results = [];
 expectedResults = [5, 21, 6, 4];
 
 paginator.data = getCountup(1, 21);
-pageInfo.setItemsPerPage(5);
+pageConfigurator.setItemsPerPage(5);
 page1 = paginator.getPage(1); // should be [1,2,3,4,5]
 results.push(paginator.getTotalPages()); // should be 5.
 
-pageInfo.setItemsPerPage(1);
+pageConfigurator.setItemsPerPage(1);
 page2 = paginator.getPage(2); // should be [2]
 results.push(paginator.getTotalPages()); // should be 21.
 
-pageInfo.setItemsPerPage(4);
+pageConfigurator.setItemsPerPage(4);
 page3 = paginator.getPage(3); // should be [9,10,11,12]
 results.push(paginator.getTotalPages()); // should be 6.
 
-pageInfo.setItemsPerPage(6);
+pageConfigurator.setItemsPerPage(6);
 page4 = paginator.getPage(4);// should be [19,20,21]
 results.push(paginator.getTotalPages()); // should be 4.
 
@@ -140,28 +140,28 @@ else console.log('test 4B FAILED');
 // To pass, all these should trigger errors:
 let numErrors = 0;
 
-pageInfo.setItemsPerPage(false);
+pageConfigurator.setItemsPerPage(false);
 try {
 	paginator.getPage(1);
 } catch (e) {
 	++numErrors;
 }
 
-pageInfo.setItemsPerPage(1.2);
+pageConfigurator.setItemsPerPage(1.2);
 try {
 	paginator.getPage(1);
 } catch (e) {
 	++numErrors;
 }
 
-pageInfo.setItemsPerPage(0);
+pageConfigurator.setItemsPerPage(0);
 try {
 	paginator.getPage(1);
 } catch (e) {
 	++numErrors;
 }
 
-pageInfo.setItemsPerPage(-0.1);
+pageConfigurator.setItemsPerPage(-0.1);
 try {
 	paginator.getPage(1);
 } catch (e) {
@@ -185,7 +185,7 @@ else console.log('test 6 FAILED');
 // Test 7: if first argument to constructor is not array, it triggers error:
 errorTriggered = false;
 try {
-	paginator = new ArrayPaginator('', pageInfo);
+	paginator = new ArrayPaginator('', pageConfigurator);
 } catch (e) {
 	errorTriggered = true;
 }
@@ -207,8 +207,8 @@ else console.log('test 8 FAILED');
 
 // Test 9: if itemsPerPage is less than 1, it triggers error:
 errorTriggered = false;
-pageInfo.setItemsPerPage(0);
-paginator = new ArrayPaginator([1, 2, 3], pageInfo);
+pageConfigurator.setItemsPerPage(0);
+paginator = new ArrayPaginator([1, 2, 3], pageConfigurator);
 try {
 	paginator.getPage(1);
 } catch (e) {
@@ -220,8 +220,8 @@ else console.log('test 9 FAILED');
 
 // Test 10: if array is empty and you try to get the first page, it triggers error:
 errorTriggered = false;
-pageInfo.setItemsPerPage(1);
-paginator = new ArrayPaginator([], pageInfo);
+pageConfigurator.setItemsPerPage(1);
+paginator = new ArrayPaginator([], pageConfigurator);
 try {
 	paginator.getPage(1);
 } catch (e) {
@@ -244,8 +244,7 @@ else console.log('test 11 FAILED');
 
 
 // Test 12: if itemsPerPage is greater than array length, .getPage(1) simply returns the entire array:
-pageInfo.setItemsPerPage(12);
-paginator = new ArrayPaginator([1, 2, 3, 4, 5], pageInfo);
-page1 = paginator.getPage(1);
+pageConfigurator.setItemsPerPage(12);
+paginator = new ArrayPaginator([1, 2, 3, 4, 5], pageConfigurator);
 if (arraysMatch(paginator.getPage(1), paginator.data)) console.log('test 12 passed');
 else console.log('test 12 FAILED');
