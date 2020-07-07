@@ -7,8 +7,12 @@ A TypeScript/Javascript class for paginating an array.
 
 ```ts
 constructor(
-    data? = [], // the actual array, becoming property this.data
-    options?: { itemsPerPage: number } = {itemsPerPage: 25}
+    data: any[], // the actual array, becoming this.data
+   
+    __pageInfo: {
+        setItemsPerPage: (num) => void;
+        getItemsPerPage: () => number;
+    }
 ) 
 ```
 
@@ -29,8 +33,6 @@ className : string // read-only
 <summary>view methods</summary>
  
  ```
-setItemsPerPage(num): void
-
 getPage(pageNumber): any[]
 
 getCurrentPageNumber(): number
@@ -92,16 +94,18 @@ protected   _errorIfPropertyHasNoValue(
 // Getting an instance:
 let paginator = new ArrayPaginator(
     [1,2,3,4,5,6,7,8,9,10], 
-    {itemsPerPage: 5}
+    pageInfo
 );
 
+pageInfo.setItemsPerPage(5);
 paginator.getPage(1); // --> [1,2,3,4,5]
 
 paginator.getCurrentPageNumber(); // --> 1
 
 paginator.getTotalPages(); // --> 2
 
-paginator.getPage(2, {itemsPerPage: 4}); // --> [5,6,7,8]
+pageInfo.setItemsPerPage(4);
+paginator.getPage(2); // --> [5,6,7,8]
 
 paginator.getCurrentPageNumber(); // --> 2
 

@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/array-paginator",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Simple, small array-paginating TypeScript/JavaScript class",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,14 +31,8 @@
     "@writetome51/get-countup-countdown": "^1.0.3"
   },
   "dependencies": {
-    "@writetome51/array-get-adjacent-at": "^1.0.4",
-    "@writetome51/array-get-head-tail": "^1.0.5",
     "@writetome51/array-get-page": "^0.0.1",
     "@writetome51/get-rounded-up-down": "^1.0.11",
-    "@writetome51/has-value-no-value": "^1.0.2",
-    "@writetome51/in-range": "^1.0.4",
-    "@writetome51/not": "^1.0.5",
-    "@writetome51/public-array-container": "^3.0.0",
-    "error-if-not-integer": "^1.0.0"
+    "@writetome51/public-array-container": "^3.0.0"
   }
 }
