@@ -29,8 +29,9 @@ className : string // read-only
 <summary>view methods</summary>
  
  ```
-getPage(pageNumber, options?: { itemsPerPage: number }): any[]
-    // If `itemsPerPage` is not provided, its most recent setting will be used.
+setItemsPerPage(num): void
+
+getPage(pageNumber): any[]
 
 getCurrentPageNumber(): number
     // returns page asked for in most recent call of this.getPage()
