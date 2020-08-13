@@ -142,11 +142,8 @@ npm i  @writetome51/array-paginator
 
 ## Loading
 
-```ts
-// If using TypeScript:
+```js
 import {ArrayPaginator} from '@writetome51/array-paginator';
-// If using ES5 JavaScript:
-var ArrayPaginator = require('@writetome51/array-paginator').ArrayPaginator;
 ```
 
 
