@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/array-paginator",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Simple, small array-paginating TypeScript/JavaScript class",
   "type": "module",
   "main": "dist/index.js",
@@ -32,8 +32,8 @@
     "@writetome51/get-countup-countdown": "^2.0.1"
   },
   "dependencies": {
-    "@writetome51/array-get-page": "^1.0.0",
-    "@writetome51/get-rounded-up-down": "^2.0.0",
+    "@writetome51/array-get-page": "^1.0.1",
+    "@writetome51/get-rounded-up-down": "^3.0.0",
     "@writetome51/public-array-container": "^4.0.0"
   }
 }
